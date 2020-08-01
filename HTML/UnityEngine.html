@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
+  <link rel="stylesheet" type="text/css" href="../CSS/topNav.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/leftNav.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>COMP 266/UnityEngine</title>
+  <script src="../Scripts/JQuery.js"></script>
+  <script src="../Scripts/myJQuery.js"></script>
+</head>
+<body>
+  <!--top navbar-->
+  <nav class="row" id="top-navbar">
+    <ul>
+      <li class="right">
+        <a href="javascript:void(0);" class="icon" onclick="topNavCollapse()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </li>
+      <li><a href="index.html">Main</a></li>
+      <li><a href="CSharp.html">C#</a></li>
+      <li class="active"><a href="UnityEngine.html">Unity Engine</a></li>
+      <li><a href="Animating.html">Animating</a></li>
+      <!--this will be a drop down listing the names of each projects-->
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Projects</a>
+        <div class="dropdown-content">
+          <a href="TopDown.html">Top-Down shooter</a>
+        </div>
+      </li> 
+      <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+      <li>
+        <!--off site link-->
+        <a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a>
+      </li> 
+      <li><a href="QuizSelection.html">Quizs</a></li>
+      <li class="right"><a href="Contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <!--
+    fixed to the left side of the screen, will hide until tapped for
+    mobile when it is the first time the user comes to the site on mobile 
+    point out that there is the side navbar
+  -->
+  <!--left side navbar-->
+  <nav id="left-navbar">
+    <ul>
+      <li><i class="fa fa-window-close fa-5x" id="close"></i></li>
+      <li><a href="#newProject">Creating a New Project</a></li>
+      <li><a href="#navEditor">Navigation in the Editor</a></li>
+      <li><a href="#windows">Windows</a></li>
+      <li><a href="#tags">Tags</a></li>
+      <li><a href="#layers">Layers</a></li>
+      <li><a href="#components">Components</a></li>
+      <li><a href="#prefabs">Prefabs</a></li>
+      <li><a href="#ui">UI</a></li>
+      <li><a href="#importing_assets">Importing Assets</a></li>
+      <li><a href="#2D-physics">Physics2D</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#stayOrganized">Staying Organized</a></li>
+      <li><a href="#readings">Helpful Readings</a></li>
+    </ul>
+  </nav>
+  <!--show the image with its alt in a window at the center of the screen-->
+  <div id="image-over">
+    <button id="close-btn">Close</button>
+    <div class="row">
+      <div class="col-12">
+        <img src="#" alt="" id="click-img">
+      </div>
+    </div>
+  </div>
+  <!--click to show the side navbar when on mobile-->
+  <div id="show-side-nav"></div>
+  <div id="panel">
+    <h1>What This Is</h1>
+    <p>
+      Everything that you are learning in this section will prepare you to follow
+      along in the projects. Thus, not everything will be covered, just what you
+      need to know. After completion of this section I suggest you move into
+      <a href="Animating.html">Animating</a>. When you are ready you can access
+      the quizes <a href="QuizSelection.html#unity-engine">here</a>.
+    </p>
+    <h2>Prerequisites</h2>
+    <ul>
+      <li>Go through <a href="CSharp.html">C#</a></li>
+      <li>
+        <a href="https://www.youtube.com/watch?v=CVDYU1WJD0E&t=37s">
+          How to Install Unity and MASTER Unity Hub!-Unity 2019
+        </a>
+      </li>
+    </ul>
+    <div id="newProject">
+      <div class="row">
+        <h2>Creating a New Project</h2>
+        <p>
+          To create a new project first locate Unity Hub on your desktop or whatever 
+          version of unity you have installed. I will be using version 2019.3.0f6
+        </p>
+        <img src="../Images/unityEngine/newProject/opening_hub.png" 
+            alt="The Unity Hub shortcut on your desktop" class="img-small">
+      </div>
+      <div class="row">
+        <p class="col-12">
+          After opening the Hub click the blue button to the far right that says
+          <i>new</i>. You will then open a new window, here you will select 2D
+          give a name to the project and choose where to store it. I recomend 
+          making a directory called repos in your documents folder in the C 
+          drive. 
+        </p>
+        <div class="col-7">
+          <img src="../Images/unityEngine/newProject/click_new_project.jpg" 
+          alt="Projects window of Unity Hub with a red-underline at the 'new' button">
+        </div>
+        <div class="col-5">
+          <img src="../Images/unityEngine/newProject/project_settings.jpg" 
+          alt="project creation window of Unity Hub with 2D selected and a red
+              arrow pointing at it">
+        </div>
+        <p class="col-12">Now all you need to do is click create at the bottom left.</p>
+      </div>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="navEditor">
+      <h2>Navigating the Editor</h2>
+      <p>
+        Here we are going to go over the basic navigation of the editor. How
+        to move around in scenes, custom colors and layouts are what will be
+        covered here as well as toggleing between 2D and 3D game modes.
+      </p>
+      <div class="row">
+        <h3>Switching between 2D & 3D</h3>
+        <p class="col-8">
+          If any of created the project in 3D mode and not 2D you don't have to worry
+          as there is a way to toggle between 2D and 3D. You can find this right under
+          there <b>scene</b> window.
+        </p>
+        <img src="../Images/unityEngine/navEditor/2D_toggle.jpg" 
+             alt="the toggle between 2D and 3D for the scene view in the unity editor"
+             class="col-4">
+      </div>
+      <div class="row">
+        <h3>Scene Navigation Tools</h3>
+        <p>
+          To navigate the Editor you will primarily useing 5 different tools located
+          in the top left of the screen under <i>File</i>. each of these tools can be
+          quickly switched to by use its short - cut (Q, W, E, R, T)
+        </p>
+        <img src="../Images/unityEngine/navEditor/5_move_tools.jpg" 
+            alt="The scene navigation tools">
+      </div>
+      <div class="row">
+        <h3>Custom Layouts</h3>
+        <p>
+          All the windows in the editor can be moved around and resized however you like.
+          There are also a few layouts that are per-made which you can choose between.
+          You will find the layouts in the <i>Layout</i> dropdown at the top right side
+          of the screen.
+        </p>
+        <img src="../Images/unityEngine/navEditor/layout.jpg" 
+            alt="Layout dropdown in the upper right of the editor">
+      </div>
+      <div class="row">
+        <h3>Play Mode Tint</h3>
+        <div class="col-4 col-s-12">
+          <img src="../Images/unityEngine/navEditor/play_tint_0.jpg" 
+            alt="preferences in the Edit dropdown, near the bottom">
+        </div>
+        <div class="col-8 col-s-12">
+          <p>
+            Now if you press the play button at the top 
+            of the screen, by default I beleive there is no tint so how are you 
+            suppose to know if your in play mode easly? Even if there is a 
+            default tint you may want to change it to somthing you like. To do 
+            this click <i>Edit -> preferences -> colors</i> and you will be able
+            change the play mode tint.
+          </p>
+        </div>
+        <div class="col-8 col-s-12">
+          <img src="../Images/unityEngine/navEditor/play_tint_1.jpg" 
+            alt="shows where the playMode tint is in colors, just above Scene">
+        </div>
+        <div class="col-8">
+          <p>
+            You change more that the playmdoe tint but I would suggest not doing
+            that and just sticking with the defaults.
+          </p>
+        </div>
+      </div>
+      <!--section challenge 1-->
+      <div class="row">
+        <h3>Section Challenge #1</h3>
+        <p>
+          Here I want you to go in and change your play mode tint to someting you like.
+        </p>
+        <div>
+          <button class="solution-button">Solution</button>
+          <!--will be hidden until Solutions is click-->
+          <div class="challenge_answer row">
+            <p>Follow the instructions that are above.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <h3>Createing Folders</h3>
+        <p>
+          In the <a href="#windows">Project</a> window right click and go to 
+          create and then click new Folder.
+        </p>
+        <h4>Helpful Links</h4>
+        <ul>
+          <li>
+            <a href="https://docs.unity3d.com/Manual/UsingTheEditor.html">
+              Unity's interface
+            </a>
+          </li>
+          <li><a href="QuizSelection.html#unity-engine">Quiz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="windows">
+      <h2>Windows</h2>
+      <p>
+        For this section we are going to go over some of the windows that you 
+        will have open while developing (Hierarchy, Scene, Game, Inspector, 
+        Project, Animator, Animation, Console, Tile Palette). Each of these windows
+        has its own special purposes and will make development much easier.
+      </p>
+      <!--scene, project-->
+      <h3>Hierarchy</h3>
+      <p>
+        This window will have a list made up of all the game objects that are
+        in the Scene. When you want to add something new to the Scene all you
+        need to do is drag it from the Project folder into the Hierarchy window,
+        or right click in the Hierarchy and you'll see a list of things you can
+        add, there is also a little + icon at the top that you can click. It is
+        in this window that you can child one object to another (you will see use
+        of this window in the <a href="../HTML/TopDown.html">Projects</a> section).
+      </p>
+      <h3>Scene</h3>
+      <p>
+        The Scene window is very important because it is where you will be doing
+        the majority of your work. You will be designing your levels and UI in 
+        this window. That might not sound like a lot to you now but trust me
+        your going to be here lots. You'll notice at the top of the window there
+        are a bunch of buttons, those are cover below.
+      </p>
+      <ul>
+        <!--shaded-->
+        <li class="row">
+          <div class="col-2">
+            <img src="../Images/unityEngine/windows/shaded.jpg"
+               alt="">
+          </div>
+          <div class="col-10">
+            <p>
+              This is beond the scope for here.
+            </p>
+          </div>
+        </li>
+        <!--2D-->
+        <li class="row">
+          <div class="col-1">
+            <img src="../Images/unityEngine/windows/2D_toggle.jpg"
+               alt="">
+          </div>
+          <div class="col-11">
+            <p>This just switchs from 2D view to 3D view</p>
+          </div>
+        </li>
+        <li class="row">
+          <div class="col-1">
+            <img src="../Images/unityEngine/windows/light_buld.jpg"
+               alt="">
+          </div>
+          <div class="col-11">
+            <p>
+              This one is for toggleing the lights in the scene. When off the light
+              on the camera is used and when on the scenes lights are used.
+            </p>
+          </div>
+        </li>
+        <!--audio-->
+        <li class="row">
+          <div class="col-1">
+            <img src="../Images/unityEngine/windows/sound.jpg"
+               alt="">
+          </div>
+          <div class="col-11">
+            <p>
+              this one toggles the audio on and off (make sure this is on or
+              you may get very confused at times).
+            </p>
+          </div>
+        </li>
+        <!--stack-->
+        <li class="row">
+          <div class="col-1">
+            <img src="../Images/unityEngine/windows/stack.jpg"
+               alt="">
+          </div>
+          <div class="col-11">
+            <p>
+              beong the scope of this site.
+            </p>
+          </div>
+        </li>
+        <!--eye-->
+        <li class="row">
+          <div class="col-1">
+            <img src="../Images/unityEngine/windows/eye.jpg"
+            alt="">
+          </div>
+          <div class="col-11">
+            <p>
+              also beyond the scope of the site.
+            </p>
+          </div>
+        </li>
+        <!--grid-->
+        <li class="row">
+          <div class="col-1">
+            <img src="../Images/unityEngine/windows/grid.jpg"
+               alt="">
+          </div>
+          <div class="col-11">
+            <p>
+              Toggle the gids visibility.
+            </p>
+          </div>
+        </li>
+        <!--tools-->
+        <li class="row">
+          <div class="col-1">
+            <img src="../Images/unityEngine/windows/tools.jpg"
+               alt="">
+          </div>
+          <div class="col-11">
+            <p>
+              this one will toggle tools for the game object that has focus
+            </p>
+          </div>
+        </li>
+        <!--camera-->
+        <li class="row">
+          <div class="col-1">
+            <img src="../Images/unityEngine/windows/camera.jpg"
+               alt="">
+          </div>
+          <div class="col-11">
+            just has some camera settings
+          </div>
+        </li>
+        <!--gizmos-->
+        <li class="row">
+          <div class="col-1">
+            <img src="../Images/unityEngine/windows/gizmos.jpg"
+               alt="">
+          </div>
+          <div class="col-11">
+            <p>
+              This one will just toggle between showing gizmos in the Scene, this
+              is not going to be seen here. But can be helpful to see a ground 
+              check circles radius.
+            </p>
+          </div>
+        </li>
+        <!--search-->
+        <li class="row">
+          <div class="col-2">
+            <img src="../Images/unityEngine/windows/search.jpg"
+               alt="">
+          </div>
+          <div class="col-7 col-s-5">
+            <p>
+              As you can imagine, this is for searching for a specific object
+              in the Scene.
+            </p>
+          </div>
+          <div class="col-3 col-s-5">
+            <img src="../Images/unityEngine/windows/search_example.jpg" alt="">
+          </div>
+        </li>
+      </ul>
+      <h3>Game</h3>
+      <p>
+        This window is what you will use when testing the game. After clicking
+        the Play button at the top you will begin controlling the player object
+        in here. You will notice the buttons on the top here as well, they are
+        all quite self explanitory.
+      </p>
+      <h3>Inspector</h3>
+      <p>
+        You will be working in this window just as much as the Scene window,
+        this is where you will be adding all the different components to the
+        objects in the Hierarchy.
+      </p>
+      <h3>Project</h3>
+      <p>
+        Here is where all the assets you use are going to be located, this includes
+        your scripts, images, sounds, models, prefabs and everything elese. It is
+        important that you keep the organized with folders.
+      </p>
+      <h3>Animator</h3>
+      <p>
+        The responsibility of this window is to handle the animations and how they
+        transition between one another. If this window is not open just go to 
+        <i>Window -> Animation</i> and you will find it.
+      </p>
+      <h3>Animation</h3>
+      <p>
+        Here you are going to be making the animations for your game, this could
+        be done useing sprite sheets or something else. (Note: until furthuer
+        notice this will not be covered directly here but we do have a list of
+        videos on the subject (We did not create any of the videos just created
+        the playlist)).
+      </p>
+      <h3>Console</h3>
+      <p>
+        This is where errors, warrnings and logs from your scripts will be 
+        printed. Using Debug.Log("hello world") will print to the Console
+        hello world. Thats all there is to know realy.
+      </p>
+      <h3>Tile Palette</h3>
+      <p>
+        You will see this window get used in the 
+        <a href="../HTML/TopDown.html#tileMap">Projects</a> section to create the layout
+        of the level. To open this window go to <i>Window -> 2D</i> and you will 
+        see it. I suggest you watch some 
+        <a href="../HTML/VideoTutorials.html#creatingAssets">videos</a> on the subject 
+      </p>
+      <h4>Helpful Links</h4>
+      <ul>
+        <li>
+          <a href="https://docs.unity3d.com/Manual/UsingTheEditor.html">
+            Unity's interface
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#unity-engine">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="tags">
+      <h2>Tags</h2>
+      <div class="row">
+        <p>
+          Tags are a way of identifying GameObjects for scripting purposesess, they 
+          eliminate the need to manually add game objects to a script. <br>
+          <strong>NOTE: takes cannot be renamed after they are made.</strong>
+        </p>
+        <p>The following is a list of the default tags in the editor.</p>
+        <ul>
+          <li>Untagged</li>
+          <li>Respawn</li>
+          <li>Finish</li>
+          <li>EditorOnly</li>
+          <li>MainCamera</li>
+          <li>Player</li>
+          <li>GameController</li>
+        </ul>
+      </div>
+      <div class="row">
+        <img src="../Images/unityEngine/tags/tags.png" 
+          alt="Assigning a tag to a game object with the tag dropdown in the inspector"
+          class="col-4">
+        <div class="col-8">
+          <p>
+            The tag of an object can be found in the inspector window for any 
+            GameObject. To add a new custom tag all you need to do is click 
+            <i>Add Tag...</i> at the bottom of the dropdown menu. Or you can go 
+            <i>Edit->Project Settings->tagsand layers</i>
+          </p>
+          <p>
+            We can find an object with some tag using the 
+            <b>GameObject.FindGameObjectWithTag().</b>
+            You will however notice that there is another function 
+            <b>FindGameObjectsWithTag()</b>
+            we only want to use the plural one if there are multiple GameObjects 
+            with thedesired tag. <br>
+            <strong>
+              NOTE: you will see more on tags in the 
+              <a href="TopDown.html">project</a> section.
+            </strong>
+          </p>
+          <img src="../Images/unityEngine/tags/get_object_with_tag.png" 
+              alt="C Sharp how to find a gameObject by tag">
+        </div>
+      </div>
+      <h4>Helpful Links</h4>
+      <ul>
+        <li>
+          <a href="https://docs.unity3d.com/Manual/Tags.html">
+            Tags
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#unity-engine">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="layers">
+      <h2>Layers</h2>
+      <p>
+        In this section you will learn about layers, both the <b>sorting layers</b> used 
+        in 2D games and regular <b>layers</b> for all games.
+      </p>
+      <!--sorting layers-->
+      <div class="row">
+        <h3>Sorting Layers</h3>
+        <!--img-->
+        <div class="col-4">
+          <img src="../Images/unityEngine/layers/sorting_layers.png" 
+               alt="Sprite Renderer component Sorting Layer">
+        </div>
+        <!--text-->
+        <div class="col-8">
+          <p>
+            Sorting layers are used with Sprites in a 2D game and they are for sorting
+            the overlay order of the sprites. When the <b>Sprite renderer</b> component
+            is added to a gameObject then under <i>Additional Settings</i> you will see
+            that there is the <b>Sorting Layer</b> dropdown. There is also an order in
+            layer so you can overlap sprites on the same sorting layer any way you want.
+          </p>
+          <p>
+            To add a new <b>Sorting Layer</b> all you need to do in click <i>Add Sorting
+            Layer...</i> at the bottom of the dropdown. Or <i>Edit->Project Settings-> tags
+              and layers.</i>
+          </p>
+        </div>
+      </div>
+      <!--layers-->
+      <div class="row">
+        <h3>Layers</h3>
+        <p>
+          In the inspector window to the right of the <b>Tag</b> dropdown you may have
+          noticed the Layer dropdown as well. These layers are usful for many things
+          but here I'll just talk about how they help us when working with physics.
+        </p>
+        <div class="row">
+          <!--add layer img-->
+         <div class="col-4 col-s-12">
+          <img src="../Images/unityEngine/layers/layers.png" 
+            alt="gameObject inspector Layer setting">
+         </div>
+         <!--text-->
+          <div class="col-6 col-s-12">
+            <p>
+              Layers are helpful when we are working with physics because if we go to 
+              <i>Edit -> Project Settings</i> in the top left hand corner then go to 
+              physics 2D and scroll down you will see the Layer Collision Matrix dropdown. 
+              Using this we can decide what objects can collide with and what they will 
+              pass right through.  You can add a new layer the same way that a sorting 
+              layer is added.
+            </p>
+          </div>
+          <!--collision matrix img-->
+          <div class="col-2 col-s-12">
+            <img src="../Images/unityEngine/layers/collision_matrix.png" 
+                 alt="Layer Collision Matrix">
+          </div>
+      </div>
+      </div>
+      <h4>Helpful Links</h4>
+      <ul>
+        <li>
+          <a href="https://docs.unity3d.com/Manual/Layers.html">
+            Layers
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.unity3d.com/Manual/2DSorting.html">
+            Sorting Layers
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#unity-engine">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="components">
+      <h2>Components</h2>
+      <p>
+        In this section we will cover some of the main components that you will 
+        be useing. But first let me explain what a component is. the way that 
+        Unity works is based off of components, components are scripts that are
+        added to <b>GameObjects</b> to make them have different functionality.
+        There are many per-made components that all have there own icons and 
+        then there are the scripts that you will be writting which don't have there
+        special icon but function the exact same way as all other components.
+      </p>
+      <ul>
+        <li>Collider(s)</li>
+        <li>Rigidbody</li>
+        <li>Sprite Renderer</li>
+        <li>Audio Source</li>
+        <li>Animator</li>
+      </ul>
+      <div id="colliders">
+        <h3>Colliders</h3>
+        <p>
+          There are a veriety of colliders in Unity, when you click add component and
+          search for collider you will notice that there are 2D and 3D colliders. 
+          Because we are focusing on 2D games we can ignore all things 3D.
+        </p>
+        <h3>List of 2D Collisers</h3>
+        <ul>
+          <li>Circel Collider 2D</li>
+          <li>Box Collider 2D</li>
+          <li>Polygon Collider 2D</li>
+          <li>Edge Collider 2D</li>
+          <li>Capsule Colider 2D</li>
+          <li>Composite Collider 2D</li>
+        </ul>
+        <p>
+          While there are six different 2D colliders they all function the same 
+          essentialy. When you add one to an object there will be a light green
+          outline, if it does not fit the size of the object to your liking you 
+          can easly change it with the <i>Edit Collider</i> button. Just click 
+          that and you will be able to change the collider around. The only other
+          part we will discuss here is <i>Is Trigger</i> this will make it so 
+          other object don't collide with it but pass through. Below I will link 
+          to some resources that will help you gain a better understanding.
+        </p>
+        <ul>
+          <!--unity manual collider 2D-->
+          <li>
+            <a href="https://docs.unity3d.com/Manual/Collider2D.html">
+              Unity Manual Collider 2D
+            </a>
+          </li>
+          <!--scripting api collider2D-->
+          <li>
+            <a href="https://docs.unity3d.com/ScriptReference/Collider2D.html">
+              Scripting API Collider 2D 
+            </a> - read to <b>Messages</b>
+          </li>
+        </ul>
+        <p>
+          Colliders work hand in hand with the <b>Rigidbody2D</b> without colliders
+          objects would just pass right through each other. Now as you may recall 
+          from the <a href="#layers">layers</a> section we have the ability to change what
+          objects can collide with.
+        </p>
+      </div>
+      <div id="rigidbody2D">
+        <h3>Rigidbody</h3>
+        <p>
+          The <b>Rigidbody</b> is what allows a GameObject to be effected by 
+          gravity and the rest of the physics engine behind <i>Unity</i>. You 
+          can use the  <b>Rigidbody</b> within other scripts that you write to
+          manipulate the gameObject with the attached rigidbody. The rigidbody
+          has three different Body Types (Dynamic, Kinematic, and Static). The
+          Dynamic body type will make the object be effected by all forces,
+          the Kinematic body type requires you to apply some force to the 
+          object in order for it to move. I won't discuss the Static body type
+          because it is not used here. To learn more visit 
+          <a href="https://docs.unity3d.com/Manual/class-Rigidbody2D.html">
+            Unity Manual Rigidbody2D
+          </a>
+        </p>
+        <!--gifs-->
+        <div class="row">
+          <!--no collider-->
+          <div class="col-6 col-s-12">
+            <p>Rigidbody with No Collider</p>
+            <!--Gif of object with rb and without collider-->
+            <div class="gif">
+              <iframe src="https://giphy.com/embed/frLvKBw5vcEoMKWknr" width="480" 
+                height="270" class="giphy-embed"></iframe>           
+            </div>
+            <p><a href="https://giphy.com/gifs/WUDO9CCnTB1QyNrCWc">via GIPHY</a></p>
+          </div>
+          <!--collider-->
+          <div class="col-6 col-s-12">
+            <p>Rigidbody with Collider</p>
+            <!--Gif of object with rb and without collider-->
+            <div class="gif">
+              <iframe src="https://giphy.com/embed/WUDO9CCnTB1QyNrCWc" width="480" 
+              height="270" class="giphy-embed"></iframe>
+            </div>
+            <p><a href="https://giphy.com/gifs/WUDO9CCnTB1QyNrCWc">via GIPHY</a></p>
+          </div>
+        </div>
+        <!--section challenge 1-->
+        <div class="row">
+          <h3>Section Challenge #1</h3>
+          <p>
+            The challenge for this section is to make a box that will fall and collide
+            with a platform below it like in the above GIF.
+          </p>
+          <div>
+            <button class="solution-button">Solution</button>
+            <!--will be hidden until Solutions is click-->
+            <div class="challenge_answer row">
+              <!--desc-->
+              <div class="col-7 col-s-12">
+                <p>
+                  All you need to do for this challenge is add two objects into the 
+                  scene. One that is rectangular and another that is a square, do
+                  this with a sprite renderer. Next add a box collider 2D to each
+                  of them and a rigidbody only to the one that is shaped like a 
+                  square. For the platform you will need to make it static and have
+                  zero for the gravity.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="spriteRenderer">
+        <h3>Sprite Renderer</h3>
+        <p>
+          The only thing you will really need to know it that this is what will 
+          display images to the game scene. For more information go to 
+          <a href="https://docs.unity3d.com/Manual/class-SpriteRenderer.html">
+            Unity Manual SpriteRenderer
+          </a>
+        </p>
+      </div>
+      <div id="audio_source">
+        <h3>Audio Source</h3>
+        <p>
+          To learn about this please go to <a href="../HTML/WorkingWithSounds.html">
+          Working with Sounds</a>.
+        </p>
+      </div>
+      <div id="animator">
+        <h3>Animator</h3>
+        <p>
+          To learn about this please go to <a href="../HTML/Animating.html">
+          Animating</a>
+        </p>
+      </div>
+      <h4>Helpful Links</h4>
+      <ul>
+        <li>
+          <a href="https://docs.unity3d.com/Manual/Components.html">
+            Components
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#unity-engine">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="prefabs">
+      <h2>Prefabs</h2>
+      <p>
+        When making a game you will need to re-use game assets, these assets 
+        are called <b>Prefabs</b>. <b>Prefabs</b> are copies of a game object,
+        take for example an enemy. You don't want to create a new enemy from 
+        scratch every time you need one, thats why you would make a prefab.
+        It will store all the data about that enemy for easy re-uses. They
+        are also very usful if we are spawning them into the game scene randomly,
+        as without the prefab how would be tell the script what to spawn in.
+      </p>
+      <p>
+        <!--link to projects spawning enemies-->
+        <b>NOTE: this is done using instantiate which is shown in the projects 
+          <a href="../HTML/TopDown.html#shooting">here</a></b>
+      </p>
+      <p>
+        To create a <b>Prefab</b> first make a new folder called <i>Prefabs</i>
+        then drag and drop the gameObject you want to make a prefab out of
+        into that folder. Now you have a prefab, you can drag that into the scene
+        as many times as you want and making a change to the prefab will update 
+        all the <i>copies</i> that are in the game hierarchy. To learn more visit
+        <a href="https://www.youtube.com/watch?v=RNoJGuujbjM">
+          Unity Prefabs - The Complete Animated Guide | Game Dev Classroom
+        </a>
+      </p>
+      <!--section challenge 1-->
+      <div class="row">
+        <h3>Section Challenge #1</h3>
+        <p>
+          All I want you to do for this challenge is make a prefab (this can be of
+          anything).
+        </p>
+        <div>
+          <button class="solution-button">Solution</button>
+          <!--will be hidden until Solutions is click-->
+          <div class="challenge_answer row">
+            <!--desc-->
+            <div class="col-7 col-s-12">
+              <p>
+                Make a folder called 'prefabs', then drag and drop some gameObject
+                from the Hierarchy into this new folder and thats it you now have
+                a prefab.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4>Helpful Links</h4>
+      <ul>
+        <li>
+          <a href="https://docs.unity3d.com/Manual/Prefabs.html">
+            Prefabs
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="ui">
+      <h2>UI</h2>
+      <p>
+        The Unity Enige is equipted with many elements that are helpful when 
+        creating a good <i>User Interface</i>. One important thing to note is 
+        that the standard <b>text</b> element is quite blurry and its best to
+        instead download the <i>TextMeshPro</i> Package. The following is a link
+        to the a video on how to download it. 
+        <a href="https://www.youtube.com/watch?v=D33d4w89vTs">How to download 
+        TextMeshPro</a>. Here I will only be covering five of the UI elements. 
+        These are the ones that you will be using the most, the others are up 
+        to you.
+      </p>
+      <h3>Canvas</h3>
+      <p>
+        this is where all the UI elements are put to display them.
+      </p>
+      <h3>Panel</h3>
+      <p>this panel is amazing</p>
+      <h3>Text</h3>
+      <p>
+        This one is pretty self explanitory. It will display text in the Game 
+        Scene. There are many different properties that you can change and I
+        do suggest you play around with them. For example there is an Alignment 
+        property if you look at the icons for it, they should be familier if you
+        have ever used google docs or anything like that.
+      </p>
+      <p>
+        It is also possible to import your own forts. To do this follow the 
+        following. Or you can click 
+        <a href="https://docs.unity3d.com/Manual/class-Font.html">here</a> 
+        to see it done in action.
+      </p>
+      <ol>
+        <li>go to <a href="https://www.fonts.com/">fonts.com</a></li>
+        <li>find a font you like</li>
+        <li>download it, extract everything</li>
+        <li>drag the extracted folder into Unity</li>
+        <li>press the little <i>i</i> icon by font in the text</li>
+        <li>find the font you imported</li>
+      </ol>
+      <h3>Image</h3>
+      <p>
+        This one functions simmilarly to the Sprite Renderer, exept it is for UI
+        purposes and the sprite renderer is for game play purposes. Really the 
+        only way that you will learn to use this component proficiently is to
+        start using it and make things. 
+      </p>
+      <h3>Button</h3>
+      <p>
+        This one is also pretty self explanitory. It's a button, you can set it up
+        so that you can click on it some action will be triggered. Here we will
+        walk through a simple tutorial that will change the color of some text when
+        the a button is clicked on.
+      </p>
+      <p>
+        The button element comes with a childed object as well, it is text. To 
+        learn more visit <a href="https://www.youtube.com/watch?v=VHFJgQraVUs">
+        Code Monkey - Simple UI Setup (Unity Tutorial for Beginners)
+        </a>
+      </p>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="importing_assets">
+      <h2>Importing Assets</h2>
+      <p>
+        here we will go over importing 2D assets (art, sounds). When you first 
+        import the art for your game it will most likely be all blurry, this is
+        because of some compression that is done by the engine. To fix this just
+        click on the image and change the Filter Mode to Point (no filter) and
+        the Compression to None. When it comes to the sounds just drag and drop
+        them into a folder called <i>Sounds</i> (You'll have to make this your
+        self). 
+        <a href="https://www.youtube.com/watch?v=k0jIBbmwvGk">
+          Chris'Tutorials - Best Way to Import 2D Sprites & Pixel Art - Unity 2018
+          Tutorial
+        </a>
+      </p>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="2D-physics">
+      <!--physics 2D-->
+      <div class="row">
+        <h2>Physics2D</h2>
+        <p>
+          When making games there is usually going to be some kind of physics 
+          interactions taking place, this could be collisions or even just the
+          player jumping. Either way having a good understanding of the Unitys
+          2D physics engine will help you develop good 2D games.
+        </p>
+      </div>
+      <!--getting started-->
+      <div class="row">
+        <h3>Getting Started</h3>
+        <p>
+          If you go to <i>Edit -> Projects Settings -> Physics 2D</i> you will open
+          a window that allows you to limit the accuracy of physics simulations. One
+          thing you should always keep in mind, is that the higher the accuracy the
+          more time spend processing. When starting out in Unity you will most likely
+          not need to do anything in this window other than interact with the Layer
+          Collision Matix.
+        </p>
+      </div>
+      <!--collision matrix-->
+      <div class="row">
+        <div class="col-4">
+          <img src="../Images/unityProjects/TopDown/collision_matrix.jpg" 
+               alt="image of the layer collision matrix">
+        </div>
+        <div class="col-8">
+          <p>
+            This matrix allows us to pick and choose what layers can collide with 
+            each other. If you look at the check box in the far left column at the
+            bottom row you can see it is checked this means that the objects in
+            this <i>Obsticals</i> can collide with one another, where as the 
+            objects in the <i>Bullet</i> layer cannot collide with each other.
+          </p>
+        </div>
+      </div>
+      <!--scripting API-->
+      <div class="row">
+        <h3>Scripting API</h3>
+        <p>
+          Now you may not need to change any of the settings but you will be using
+           physics in your scripts. For example you may need to apply an upward 
+           force to the player object to make them jump and come backdown, but 
+           in order for them to jump you have to check that they are touching 
+           the ground. There is lots to cover here so we will only be covering
+           a small portion of it, mainly what you will need to no for basic 
+           player controllers. Some of what we cover will be directly related to
+           the rigidbody2D.
+        </p>
+        <div class="row">
+          <h3>Distance</h3>
+          <p>
+            This method calculates the minimum distance between two colliders.
+            It could be used if you want the player to be within x units of 
+            some enemy before it starts to move closer to them.
+          </p>
+        </div>
+        <div class="row">
+          <h3>IsTouchingLayers</h3>
+          <p>
+            This method will check weather the collider is touching any other
+            colliders on some specific layerMask or not. It can be used to see
+            if the player is touching the gound.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="events" class="row">
+      <div class="col-12 col-s-12">
+        <h2>Events</h2>
+        <p>
+          For this section we are goin to go over how events work and what they 
+          help us do. You may find your self asking why events are being covered
+          here and not in the <a href="CSharp.html">C#</a> section of the site.
+          Well the reason is that the scripting side of things is not nearly as 
+          important as how to use they effectivly in Unity. To see events in 
+          action please go to <a href="TopDown.html">Top-Down shoot</a> in the 
+          projects.
+        </p>
+      </div>
+      <!--example-->
+      <div class="col-12">
+        <h3>Example: Were to use an event.</h3>
+        <p>
+          Lets say that in our game we have a GameController, which keeps track
+          of how many deaths the player has. One way we could go about this would
+          be to get a reference to the GameController in the Player scrip, and 
+          in the Die() method of Player.cs add some logic for the GameController.
+          There are many issues with this approach though, one of which is that
+          the Player script now has a dependancy on the GameController. Another
+          is wee may need to have the same logic we just wrote execute if something
+          else happens to the player and now we need to write the logic we already
+          have. We're programmers, and that means we are lazy and don't like doing
+          the same thing over and over again. Now on the other hand if we are to
+          use an event to handle the players death all we would need to do is
+          create some event <i>playerDeathEvent</i> and we invoke it in the players
+          death method. Then in the GameController script we subscribe some other
+          method to the <i>playerDeathEvent</i> and all the logic in that method
+          will be executed when the player dies. But we can now subsribe this
+          method to other events and we only had the write the logic once.
+        </p>
+      </div>
+      <!--images-->
+      <div class="row">
+        <div class="col-4 col-s-12">
+          <img src="../Images/unityEngine/events/event_declaration.jpg"
+               alt="C Sharp example of how to create an event">
+        </div>
+        <div class="col-4 col-s-12">
+          <img src="../Images/unityEngine/events/event_invoke.jpg" 
+               alt="C Sharp example of invoking an event">
+        </div>
+        <div class="col-4 col-s-12">
+          <img src="../Images/unityEngine/events/event_subscription.jpg" 
+               alt="C Sharp example of subscribing a method to some event">
+        </div>
+      </div>
+      <!--take away-->
+      <div class="col-12">
+        <h3>Take Away</h3>
+        <p>
+          What you should take away from this is that events can make our code
+          cleaner and <abbr title="Don't Repeat Yourself">DRY</abbr>. If you 
+          want to know more I suggest you watch 
+          <a href="https://www.youtube.com/watch?v=G5R4C8BLEOc&list=WL&index=14&t=0s">
+            [C#] Delegates and Events (E01: delegates)
+          </a> by Sebastian Lague and also
+          <a href="https://www.youtube.com/watch?v=TdiN18PR4zk&list=WL&index=14">
+            [C#] Delgates and Events (E02: events)
+          </a> by Sebastian Lague. Both of these will help you under stand events
+          much better.
+        </p>
+      </div>
+      <h4>Helpful Links</h4>
+      <ul>
+        <li>
+          <a href="https://docs.unity3d.com/Manual/UnityEvents.html">UnityEvents</a>
+        </li>
+        <li><a href="QuizSelection.html#unity-engine">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="stayOrganized"> 
+      <h2>Staying Organized</h2>
+      <p>
+        Here I will just be telling you about some ways that you can keep 
+        everything organized in both the editor and in Visual Studio.
+      </p>
+      <h3>In The Editor</h3>
+      <p id="folder-creation">
+        Basicaly the only thing I can tell you here is to make folder and keep things
+        grouped together with those. To make a new folder just right click in the 
+        project window and go to create.
+      </p>
+      <h3>Visual Studio</h3>
+      <p>
+        There many ways to stay organized in visual studio, you can ground methods and 
+        fields by public, private an proteced and much more. To keep the fields that 
+        are visible in the inspector use [Header("something")] to group fields or
+        [Space()] to put a gap between them. But it is also just as important to 
+        keep the code it self clean and easy to read. use #region NAME #endregion
+        to group methods and fields to gether.
+      </p>
+      <!--imgs-->
+      <div class="row">
+        <div class="col-6">
+          <img src="../Images/scriptOrganization/region.jpg"
+             alt="example of using #region's in Visual Studio">
+        </div>
+        <div class="col-6">
+          <img src="../Images/scriptOrganization/script_organization.jpg"
+             alt="example of regions being collapsed in Visual Studio">
+        </div>
+      </div>
+      <div class="row">
+        <p>
+          As I have not shown [SerializeField] you propably do not know what it does.
+          Some times there are variables that we want to access in the inspector and
+          the are private so we use that to make them visible there, if they are just
+          public then they will show there without it.
+        </p>
+      </div>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="readings" class="row">
+      <h1>Helpful Readings</h1>
+      <p>
+        Here I will be providing you with some helpful readings, I strongly suggest
+        that you read through them as knowledge is power and the more you know
+        the better developer you can become.
+      </p>
+      <ul>
+        <li>
+          <a href="https://docs.unity3d.com/ScriptReference/Time-deltaTime.html">
+            Unity Manual - Time.deltatime
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/index.html">
+            Unity Manual - Unity UI: Unity User Interface
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.unity3d.com/ScriptReference/Input.html">
+            Unity Manual - Input
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.unity3d.com/ScriptReference/Input.GetKeyDown.html">
+            Unity Manual - Input.GetKeyDown
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/watch?v=Pzd8NhcRzVo">
+            Brackeys - NEW INPUT SYSTEM in Unity
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--footer-->
+  <footer class="row" id="footer">
+    <div class="row footer-top">
+      <div class="col-4 col-m-8 col-s-12">
+        <div class="row">
+          <p>
+            Using this site you gain the knowledge you need to make 2D games in
+            Unity. We provide you with tutorials that were made by us but also
+            provide links to other sources that you will find extremly helpful.
+            In the <a href="VideoTutorials.html">video turotials</a> is where
+            you can find the links to various playlist that will help you on
+            your journy.
+          </p>
+        </div>
+        <div class="row">
+          <ul class="inline">
+            <li><a href=""><i class="fa fa-twitter-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-facebook-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-instagram fa-2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-4 col-m-12 col-s-12">
+        <p>
+          After getting introduced to everything we are going to combine all the 
+          new skill you've accquired into makeing two project games. One will be 
+          a 2D side scroller, and the other will the a top-down shooter. I if you
+          are completly new to everything about this I suggest you start with C# 
+          here and move on accordingly. 
+        </p>
+      </div>
+      <div class="col-4 col-m-12 col-s-12">
+        <h2>Navigation</h2>
+        <div class="col-6">
+          <ul>
+            <li><a href="CSharp.html">C#</a></li>
+            <li><a href="UnityEngine.html">Unity Engine</a></li>
+            <li><a href="Animating.html">Animating</a></li>
+            <li><a href="TopDown.html">Top-Down shooter</a></li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <ul>
+            <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+            <li><a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a></li>
+            <li><a href="QuizSelection.html">Quizs</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p>This is the address</p>
+      </div>
+    </div>
+    <div class="row footer-bottom col-12 col-s-12">
+      <p><i class="fa fa-copyright"></i><span id="date"></span> Kelsey</p>
+    </div>
+  </footer>
+<script src="../Scripts/script.js"></script>
+</body>
+</html>

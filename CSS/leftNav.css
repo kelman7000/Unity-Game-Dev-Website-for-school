@@ -1,0 +1,108 @@
+/*code from  w3schools.com
+url: https://www.w3schools.com/css/css_navbar.asp
+author: Unknown
+published: Unkown*/
+#left-navbar li {
+  width: 100%;
+}
+
+#left-navbar li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#left-navbar li a:hover {
+  background-color: #555;
+  color: white;
+  font-size: large;
+}
+
+#show-side-nav {
+  width: 20px;
+  height: 100px;
+  position: fixed;
+  background-color: gray;
+  z-index: 2;
+  border-radius: 25px;
+  background-color: rgba(75, 64, 146, 0.671);
+  top: 30%;
+  left: -10px;
+}
+
+#show-side-nav:hover {
+  cursor: pointer;
+}
+
+/*for mobile*/
+@media only screen and (max-width: 600px){
+  #left-navbar {
+    width: 0%;
+  }
+
+  #close {
+    display: block;
+  }
+
+  #show-side-nav {
+    display: inline;
+  }
+
+  #left-navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 10%;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+    top: 46px;
+    left: 0;
+    background-color: #f1f1f1;
+    z-index: 2;
+  }
+}
+
+/* For tablets: */
+@media only screen and (min-width: 600px) {
+  #show-side-nav {
+    display: none;
+  }
+
+  #left-navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 10%;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+    top: 46px;
+    left: 0;
+    background-color: #f1f1f1;
+    z-index: 2;
+  }
+}
+
+  /* For desktop: */
+  @media only screen and (min-width: 769px) {
+    #show-side-nav {
+      display: none;
+    }
+  
+    #left-navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 10%;
+      height: 100%;
+      overflow: auto;
+      position: fixed;
+      top: 46px;
+      left: 0;
+      background-color: #f1f1f1;
+      z-index: 2;
+    }
+  } 

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
+  <link rel="stylesheet" type="text/css" href="../CSS/topNav.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>COMP 266/Animating</title>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+  <script src="../Scripts/jQuery.js"></script>
+</head>
+<body>
+  <!--top navbar-->
+  <nav class="row" id="top-navbar">
+    <ul>
+      <li class="right">
+        <a href="javascript:void(0);" class="icon" onclick="topNavCollapse()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </li>
+      <li><a href="index.html">Main</a></li>
+      <li><a href="CSharp.html">C#</a></li>
+      <li><a href="UnityEngine.html">Unity Engine</a></li>
+      <li class="active"><a href="Animating.html">Animating</a></li>
+      <!--this will be a drop down listing the names of each projects-->
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Projects</a>
+        <div class="dropdown-content">
+          <a href="TopDown.html">Top-Down shooter</a>
+        </div>
+      </li> 
+      <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+      <li>
+        <!--off site link-->
+        <a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a>
+      </li> 
+      <li><a href="QuizSelection.html">Quizs</a></li>
+      <li class="right"><a href="Contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <!--show the image with its alt in a window at the center of the screen-->
+  <div id="image-over">
+    <button id="close-btn">Close</button>
+    <div class="row">
+      <div class="col-8 sol-s-12">
+        <img src="#" alt="" id="click-img">
+      </div>
+      <div class="col-4 col-s-12">
+        <p id="img-alt">
+        </p>
+      </div>
+    </div>
+  </div>
+  <div id="panel">
+    <h1>Animating</h1>
+    <p>
+      In this section we are going to learn about animations. The animations in
+      Unity can be used to do many things, in fact you can even use nothing but
+      animations to make a complex boss. This is helpful because it eliminates
+      the need to write an enemy boss AI. 
+      <a href="https://www.youtube.com/watch?v=AD4JIXQDw0s">
+        Brackeys - How to make a BOSS in Unity!
+      </a> is a video that will walk you through boss creation with 
+      animations. I implore you to watch the video. The first thing that
+      we are going to cover in this section is the animator component.
+    </p>
+    <!--Animator component-->
+    <div class="row">
+      <h2>Animator</h2>
+      <div class="col-8">
+        This component is essential when working with animations. It will need to
+        be on any object that you wish to animate, if you were to create a new 
+        <i>clip</i> for some object in the heirarchy it would automatically add
+        the <i>Animator</i> component to that object. As you can see to the right
+        the <i>Animator</i> has something called a Controller, this is what handles
+        which animation should be playing at what time given some condition.
+      </div>
+      <div class="col-4">
+        <img src="../Images/animating/animator_component.jpg" 
+             alt="the animator component when it is on an object with all of its settings">
+      </div>
+    </div>
+    <div class="divider div-transparent"></div>
+    <!--Animator & Animation windows-->
+    <div class="row">
+      <h2>Animator & Animation Windows</h2>
+      <div class="col-6">
+        <p>
+          There are two windows that you are going to need if you are working with
+          animations. To open these windows go to <i>Window->Animation</i> and you
+          will see one called Animator and another called Animation, open both of
+          these and dock them somewhere in the editor.
+        </p>
+        <p>
+          If you have an object in the heirarchy selected and have the Animation
+          window open there will be a button that says <em>Create</em>. As you 
+          may recall from earlier if you add a clip right now to this object
+          the Animator component will be added to the object automaticaly. One
+          thing you should make a habbit out of is creating a folder called
+          <i>Animations</i> and sub folders inside that foreach object that you
+          animate.
+        </p>
+        <div class="row">
+          <img src="../Images/animating/animations_folder.jpg"
+               alt="image of what the animations folder could look like, has a 
+               folder for the Player and some other objects">
+        </div>
+        <div class="row">
+          <img src="../Images/animating/sub_folder.jpg" 
+               alt="image of what the folder for some object could look like, has
+               the controller and clip(s) for said object">
+        </div>
+      </div>
+      <!--image of the windows-->
+      <div class="col-6">
+        <div class="row">
+          <h3>Animator Window</h3>
+          <img src="../Images/animating/animator_window,jpg.png"
+               alt="Image of what the Animation window looks like when open">
+        </div>
+        <div class="row">
+          <h3>Animation Window</h3>
+          <img src="../Images/animating/animation_window.jpg"
+               alt="Image of what the Animation window looks like when open">
+        </div>
+      </div>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div class="row">
+      <h2>Animation Clips</h2>
+      <div class="col-12">
+        <!--NOTE & image of slip-->
+        <div class="row">
+          <div class="col-10">
+            <p>
+              For this section we are going to learn how to make an animation clip.
+              This is going to make our game object look and feel more dynamic to
+              the player. In this example we are going to animate the little green 
+              guy to the right, its only going to have one animation that will show
+              him expanding and contracting verticaly.
+            </p>
+            <p>
+              <strong>NOTE: I will not be covering how to setup the project to start
+                animating the slim character.</strong> <br> 
+                The first thing we are going to do is open the two required windows
+            </p>
+          </div>
+          <div class="col-2">
+            <img src="../Images/animating/slim.jpg"
+                 alt="small green slim character, wearing a silver helm with a red
+                 feather in it.">
+          </div>
+        </div>
+        <!--steps for animation-->
+       <div class="col-6 col-s-12">
+        <h4>Steps for Anmiating</h4>
+        <ol>
+          <li>Download the slim sprite sheet <a href="">here</a></li>
+          <li>Open the two windows that are needed to animate</li>
+          <li>Select the slim game object</li>
+          <li>Go to the Animation window and click <i>Create</i></li>
+          <li>Name to clip slim_move</li>
+          <li>Select the sprite sheet</li>
+          <li>
+            <ol>
+              <li>Sprite Mode - Multiple</li>
+              <li>Pixels Per Unit - 100</li>
+              <li>Filter Mode - Point (no filter)</li>
+              <li>Compression - None</li>
+              <li>Click Apply then Sprite Editor</li>
+              <li>Click the Slice dropdown</li>
+              <li>
+                <img src="../Images/animating/sprite_editor_config.jpg" 
+                     alt="slice configuration: type - automatic, pivot - center,
+                     method - delete existing">
+              </li>
+              <li>Click Slice</li>
+            </ol>
+          </li>
+        </ol>
+       </div>
+       <!--slim sprite sheet-->
+       <div class="col-6 col-s-12">
+         <img src="../Images/animating/slim_sprite_sheet.jpg"
+             alt="Image of the slim sprite sheet sliced">
+       </div>
+      </div>
+      <div class="col-12">
+        <p>
+          Now that the sprites are all setup, you need to click on the little 
+          gray arrow on the right side of the sprite sheet and select all the 
+          images. Make sure you have the slim object selected and drag the 
+          sprites into the <i>Animation</i> window and drop them there. This
+          will create <i>Key Frames</i> each one will be responsible for one
+          of the sprites. You will want to space them all apart by one like
+          so
+        </p>
+        <img src="../Images/animating/slim_key_frames.jpg" 
+             alt="image of the slims Animation window, showing all the key frames">
+      </div>
+      <div class="col-12">
+        <h3>Animation Clip Properties</h3>
+        <p>
+          If you navigate around in the <i>Project</i> folder and find the
+          <i>slime_move</i> clip that was just made click on it and you will find
+          that it tells you the length of the animation in frames and its FPS.
+          You will also see a Loop Time check box you this will need to be checked 
+          for all animations that you want to play multiple times otherwise the
+          animation will play one time then end.
+        </p>
+        <img src="../Images/animating/animation_looping.jpg"
+            alt="Image of the slime_move animation object in the project folder">
+      </div>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div class="row">
+      <h2>Animation Transitions & Parameters</h2>
+      <p>
+        Here we are going to cover how to transition from one animation to 
+        another. This is all handled in the <i>Animator</i> window.
+      </p>
+      <p><b>NOTE: project setup will not be covered here</b></p>
+      <p>
+        In the <i>Animator</i> window you will see 
+        <img src="../Images/animating/plus_icon.jpg" alt="plus icon"> 
+        if you click on it you will be presented with a small dropdown of
+        primitives. We can add these to the animation to be used as conditions
+        that need to be met in order for a transition to take place. There will
+        be a node for each of the clips in this window as well.
+      </p>
+      <!--animator states-->
+      <div class="row">
+        <div class="col-6 col-s-12">
+          <img src="../Images/animating/animator_states.jpg"
+             alt="image of all the stats for the animator (Player_Fall, Player_Run,
+             Player_JetPack and Player_idle)">
+        </div>
+        <div class="col-6 col-s-12">
+          <p>
+            When a node is orange that means that it is the default animation
+            that will play. If you pay attention to the arrows coming and going
+            from each node you will propably assume that these are pointing
+            to the animations that each clip can transition into. I.e. Player_idle
+            can go to Player_Run and Player_JetPack where as Player_Run can 
+            transition into any of the other four states. But we need to add some
+            conditions to these transitions so the <i>Animator</i> knows when to
+            switch animations. This is were <b>Parameters</b> come into play.
+          </p>
+        </div>
+      </div>
+      <!--animator params and conditions-->
+      <div class="row">
+        <div class="col-12">
+          <div class="col-8 col-s-12">
+            <p>
+              For this characters <i>Animator</i> we only need four parameters (
+              VelocityX, VelocityY, Grounded, JetPack) the first two are floats
+              and the other two are or type bool. To start useing these for
+              transition one would click on one of the arrows for example the one
+              going from Player_idle to Player_Run they would see a section 
+              called Conditions all they would have to do is add one.
+              In this case we want the VelocityX param to be greater than 0.01, 
+              if this condition is met then the <i>Animator</i> will start playing 
+              the run animation for the player. Now we need a script that will 
+              pass values into these parameters.
+            </p>
+            <p>
+              For this project I created the script PlayerAnimController, the
+              implementation is not optimal but will get the point accross.
+              This script works by taking values from other objects and passing
+              them into the Animator component. To set the values of parameters
+              in the Animator you will need access to the Animator component on
+              the game object. Below is an image of the script
+            </p>
+          </div>
+          <!--image of parameters and condition-->
+          <div class="col-4 col-s-12">
+            <div class="row">
+              <h4>Parameters</h4>
+              <img src="../Images/animating/animator_params.jpg"
+                 alt="image of the four parameters used">
+            </div>
+            <div class="row">
+              <h4>Condition from idle to run</h4>
+              <img src="../Images/animating/condition_example.jpg"
+                   alt="image of the condition for a transition from idle to run">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--PlayerAnimController-->
+      <div class="col-12">
+        <img src="../Images/animating/player_anim_controller.jpg"
+             alt="Image of the PlayerAnimController script">
+      </div>
+    </div>
+  </div>
+   <!--footer-->
+   <footer class="row" id="footer">
+    <div class="row footer-top">
+      <div class="col-4 col-m-8 col-s-12">
+        <div class="row">
+          <p>
+            Using this site you gain the knowledge you need to make 2D games in
+            Unity. We provide you with tutorials that were made by us but also
+            provide links to other sources that you will find extremly helpful.
+            In the <a href="VideoTutorials.html">video turotials</a> is where
+            you can find the links to various playlist that will help you on
+            your journy.
+          </p>
+        </div>
+        <div class="row">
+          <ul class="inline">
+            <li><a href=""><i class="fa fa-twitter-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-facebook-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-instagram fa-2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-4 col-m-12 col-s-12">
+        <p>
+          After getting introduced to everything we are going to combine all the 
+          new skill you've accquired into makeing two project games. One will be 
+          a 2D side scroller, and the other will the a top-down shooter. I if you
+          are completly new to everything about this I suggest you start with C# 
+          here and move on accordingly. 
+        </p>
+      </div>
+      <div class="col-4 col-m-12 col-s-12">
+        <h2>Navigation</h2>
+        <div class="col-6">
+          <ul>
+            <li><a href="CSharp.html">C#</a></li>
+            <li><a href="UnityEngine.html">Unity Engine</a></li>
+            <li><a href="Animating.html">Animating</a></li>
+            <li><a href="TopDown.html">Top-Down shooter</a></li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <ul>
+            <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+            <li><a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a></li>
+            <li><a href="QuizSelection.html">Quizs</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p>This is the address</p>
+      </div>
+    </div>
+    <div class="row footer-bottom col-12 col-s-12">
+      <p><i class="fa fa-copyright"></i><span id="date"></span> Kelsey</p>
+    </div>
+  </footer>
+  <script src="../Scripts/script.js"></script>
+  <script src="../Scripts/myJQuery.js"></script>
+</body>
+</html>

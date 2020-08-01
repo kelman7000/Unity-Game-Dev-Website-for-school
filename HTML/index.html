@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/topNav.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>COMP 266 Site/main</title>
+  <script src="../Scripts/JQuery.js"></script>
+</head>
+<body>
+  <!--top navbar-->
+  <nav class="row" id="top-navbar">
+    <ul>
+      <li class="right">
+        <a href="javascript:void(0);" class="icon" onclick="topNavCollapse()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </li>
+      <li class="active"><a href="index.html">Main</a></li>
+      <li><a href="CSharp.html">C#</a></li>
+      <li><a href="UnityEngine.html">Unity Engine</a></li>
+      <li><a href="Animating.html">Animating</a></li>
+      <!--this will be a drop down listing the names of each projects-->
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Projects</a>
+        <div class="dropdown-content">
+          <a href="TopDown.html">Top-Down shooter</a>
+        </div>
+      </li> 
+      <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+      <li>
+        <!--off site link-->
+        <a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a>
+      </li> 
+      <li><a href="QuizSelection.html">Quizs</a></li>
+      <li class="right"><a href="Contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <!--about the site-->
+  <div id="panel">
+    <div class="row">
+      <div class="col-12 col-m-12 col-s-12">
+        <h1>About</h1>
+        <p> 
+          <span class="large-font">Welcome!</span> If you are here that probably
+          means that you want to learn how to make games? Well if that is the case
+          you've come to the right place. Here you are going to learn the essential
+          basics of how to make games in the <i><a href="https://unity.com/">Unity 
+          Engine</a></i>. You might be asking yourself <q>What are the basics? What 
+          exactly will I be learning? How will I be learning?</q> These are all 
+          exelent questions, we will provide you with a well structured, linear path
+          to progress down but following this path is up to you. First, you'll learn
+          about the programming laguage that is used to make games in <i>Unity</i>, 
+          then come the basics of the  Engine itself (how to navigate around and a 
+          breef intoroduction into everything else that will be used), after that 
+          will be an indepth section going over Animating (How you can create your 
+          own game assets), working with sounds (what you can use to make your own
+          music), and you'll even know how to make mobile games after all this!
+        </p>
+      </div>
+      <div class="col-12 col-m-12 col-s-12">
+        <h3>How it works</h3>
+        <p>
+          After getting introduced to everything we are going to combine all the 
+          new skill you've accquired into makeing two project games. One will be 
+          a 2D side scroller, and the other will the a top-down shooter. I if you 
+          are completly new to everything about this I suggest you start with C#
+          <a href="CSharp.html">here</a> and move on accordingly.
+        </p>
+      </div>
+      <!--Containter for the iamge gallery-->
+      <!--Codes from https://www.w3schools.com/howto/howto_js_slideshow_gallery.asp-->
+      <div class="col-12 col-s-12">
+        <!--full-width images with number text-->
+        <div id="slide"></div>
+        <!--image text-->
+        <div class="caption-container">
+          <p id="caption"></p>
+        </div>
+        <!--Thumbnail images-->
+        <div class="row" id="img-select"></div>
+      </div>
+    </div>
+  </div>
+   <!--footer-->
+   <footer class="row" id="footer">
+    <div class="row footer-top">
+      <div class="col-4 col-m-8 col-s-12">
+        <div class="row">
+          <p>
+            Using this site you gain the knowledge you need to make 2D games in
+            Unity. We provide you with tutorials that were made by us but also
+            provide links to other sources that you will find extremly helpful.
+            In the <a href="VideoTutorials.html">video turotials</a> is where
+            you can find the links to various playlist that will help you on
+            your journy.
+          </p>
+        </div>
+        <div class="row">
+          <ul class="inline">
+            <li><a href=""><i class="fa fa-twitter-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-facebook-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-instagram fa-2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-4 col-m-12 col-s-12">
+        <p>
+          After getting introduced to everything we are going to combine all the 
+          new skill you've accquired into makeing two project games. One will be 
+          a 2D side scroller, and the other will the a top-down shooter. I if you
+          are completly new to everything about this I suggest you start with C# 
+          here and move on accordingly. 
+        </p>
+      </div>
+      <div class="col-4 col-m-12 col-s-12">
+        <h2>Navigation</h2>
+        <div class="col-6">
+          <ul>
+            <li><a href="CSharp.html">C#</a></li>
+            <li><a href="UnityEngine.html">Unity Engine</a></li>
+            <li><a href="Animating.html">Animating</a></li>
+            <li><a href="TopDown.html">Top-Down shooter</a></li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <ul>
+            <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+            <li><a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a></li>
+            <li><a href="QuizSelection.html">Quizs</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p>This is the address</p>
+      </div>
+    </div>
+    <div class="row footer-bottom col-12 col-s-12">
+      <p><i class="fa fa-copyright"></i><span id="date"></span> Kelsey</p>
+    </div>
+  </footer>
+  <script src="../Scripts/script.js"></script>
+  <script src="../Scripts/slideShow.js"></script>
+</body>
+</html>

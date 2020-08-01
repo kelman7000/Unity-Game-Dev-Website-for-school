@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
+  <link rel="stylesheet" type="text/css" href="../CSS/topNav.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Video Tutorials</title>
+  <script src="../Scripts/JQuery.js"></script>
+</head>
+<body>
+  <!--top navbar-->
+  <nav class="row" id="top-navbar">
+    <ul>
+      <li class="right">
+        <a href="javascript:void(0);" class="icon" onclick="topNavCollapse()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </li>
+      <li><a href="index.html">Main</a></li>
+      <li><a href="CSharp.html">C#</a></li>
+      <li><a href="UnityEngine.html">Unity Engine</a></li>
+      <li><a href="Animating.html">Animating</a></li>
+      <!--this will be a drop down listing the names of each projects-->
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Projects</a>
+        <div class="dropdown-content">
+          <a href="TopDown.html">Top-Down shooter</a>
+        </div>
+      </li> 
+      <li class="active"><a href="VideoTutorials.html">Video Tutorials</a></li>
+      <li>
+        <!--off site link-->
+        <a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a>
+      </li> 
+      <li><a href="QuizSelection.html">Quizs</a></li>
+      <li class="right"><a href="Contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <div id="panel" class="row">
+    <div class="col-6">
+      <h1>Video Tutorials</h1>
+      <p>
+        This page is dedecated to providing people with a list of videos that cover the
+        major parts of game development in Unity.
+      </p>
+      <!--list of links to specific sections will be added here-->
+      <div id="downloadingUnity">
+        <h2>Downloading Unity</h2>
+        <p>as Visual studio is not avalible on mac use Visual Studio Code</p>
+        <ul>
+          <li>
+            <a href="https://www.youtube.com/watch?v=CVDYU1WJD0E&t=37s">
+              How to Install Unity and MASTER Unity Hub!-Unity 2019
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=2PVPz8Pnnrw">
+              Visual Studio for Unity
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=qCkFzMSILzk">
+              Visual Studio Code for Unity
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id="learningCSharp">
+        <h2>Learning C#</h2>
+        <ul>
+          <li>
+            <a href="https://www.youtube.com/playlist?list=PLPV2KyIb3jR6ZkG8gZwJYSjnXxmfPAl51">
+              Brackeys - How to program in C#-Beginner Course
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/playlist?list=PLGLfVvz_LVvRX6xK1oi0reKci6ignjdSa">
+              Derek Banas - C# Tutorial Play List
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=gfkTfcpWqAY&list=PLTjRvDozrdlz3_FPXwb6lX_HoGXa09Yef">
+              Programming with Mosh - C# Tutorial For Beginners-Learn C# Basics in 1 Hour
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id="unityEngine">
+        <h2>Unity Engine</h2>
+        <div id="basics">
+          <h3>Basics</h3>
+          <ul>
+            <li>
+              <a href="https://www.youtube.com/watch?v=Py8akSRnwuI">
+                Code Monkey - Simple 2D Scene Setup
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=etTZYeTrpZU">
+                Code Monkey - What is a Component? (Unity Tutorial for Beginners)
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="physics2D">
+          <h3>Physics</h3>
+          <ul>
+            <li>
+              <a href="https://www.youtube.com/watch?v=MRmHRgJCoqU">
+                Cat Trap Studios - Unity 2D Physics Tutorial
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=wDR6jvRuLEA">
+                Daniel Wood - Unity 2D Game Design Tutorial 3 - Adding physics and 
+                colliders to objects
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="animating">
+          <h3>Animating</h3>
+          <ul>
+            <li>
+              <a href="https://www.youtube.com/watch?v=hkaysu1Z-N8">
+                Brackeys - 2D Animation in Unity (Tutorial)
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=FTxQKHG5WCA">
+                Blackthornprod - MAKEING RUN, IDLE & JUMP 2D GAME ANIMATIONS - UNITY 
+                Tutorial
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=3Sa-5hi362M&t=399s">
+                Thomas Brush - Animating a 2D Character in Unity (Rigging Basics 
+                Tutorial)
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=ou8VkQB2sos">
+                Blackthornprod - HOW TO MKAE SPRITE SHEETS FOR YOUR UNITY GAME - TUTORIAL
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="creatingAssets">
+          <h3>Creating Asstets</h3>
+          <ul>
+            <li>
+              <a href="https://www.youtube.com/watch?v=ryISV_nH8qw">
+                Brackeys - TILEMAPS in Unity
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=aaEEujLtsr8">
+                Brackeys - TILSET in Photoshop
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=rLdA4Amea7Y">
+                Brackeys - PIXEL ART in Photoshop (Tutorial)
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=jJ8Ck9gLpJE&t=1353s">
+                Thomas Brush - Redesigning Link for 2D (Unity Character Design Tutorial)
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="importing_assets">
+          <h3>Importing Assets</h3>
+          <ul>
+            <li>
+              <a href="https://www.youtube.com/watch?v=k0jIBbmwvGk">
+                Best Way to Import 2D Sprites & Pixel Art - Unity 2018 Tutorial
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="sounds">
+          <h3>Audio</h3>
+          <ul>
+            <li>
+              <a href="https://www.youtube.com/watch?v=6OT43pvUyfY&t=687s">
+                Brackeys - Introduction to AUDUI in Unity
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=fZeZ75gM9p4">
+                Brackeys - How to make Music for your Game - BOSCA CEOIL
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=QL29aTa7J5Q">
+                Code Monkey - Simple Sound Manager (Unity Tutorial)
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="movement">
+        <h2>Movement</h2>
+        <ul>
+          <li>
+            <a href="https://www.youtube.com/watch?v=dwcT-Dch0bA">
+              Brackey - 2D Movement in Unity (Tutorial)
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=QGDeafTx5ug">
+              Blackthornprod - 2D DOUBLE/TRIPLE JUMP PLATFORMER CONTROLLER - EASY
+              UNITY TUTORIAL
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=whzomFgjT50&t=432s">
+              Brackeys - TOP DOWN MOVEMENT in UNITY!
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id="mobile">
+        <h2>Mobile Development</h2>
+        <ul>
+          <li>
+            <a href="https://www.youtube.com/watch?v=CGleQZVgdN4&list=PLBIb_auVtBwCKQk6blxNPYC5GEuaC4DGm">
+              Blackthornprod - MAKE AN IOS/ANDROID GAME playlist
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=bp2PiFC9sSs">
+              Brackeys - TOUCH CONTROLS in Unity!
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-6">
+      <h2>Find the tutorial you need!</h2>
+      <form action="#">
+        <input type="text" placeholder="Search..." id="search">
+        <input type="submit" value="Search" id="btn">
+      </form>
+      <div id="results" class="col-12"></div>
+    </div>
+  </div>
+   <!--footer-->
+   <footer class="row" id="footer">
+    <div class="row footer-top">
+      <div class="col-4 col-m-8 col-s-12">
+        <div class="row">
+          <p>
+            Using this site you gain the knowledge you need to make 2D games in
+            Unity. We provide you with tutorials that were made by us but also
+            provide links to other sources that you will find extremly helpful.
+            In the <a href="VideoTutorials.html">video turotials</a> is where
+            you can find the links to various playlist that will help you on
+            your journy.
+          </p>
+        </div>
+        <div class="row">
+          <ul class="inline">
+            <li><a href=""><i class="fa fa-twitter-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-facebook-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-instagram fa-2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-4 col-m-12 col-s-12">
+        <p>
+          After getting introduced to everything we are going to combine all the 
+          new skill you've accquired into makeing two project games. One will be 
+          a 2D side scroller, and the other will the a top-down shooter. I if you
+          are completly new to everything about this I suggest you start with C# 
+          here and move on accordingly. 
+        </p>
+      </div>
+      <div class="col-4 col-m-12 col-s-12">
+        <h2>Navigation</h2>
+        <div class="col-6">
+          <ul>
+            <li><a href="CSharp.html">C#</a></li>
+            <li><a href="UnityEngine.html">Unity Engine</a></li>
+            <li><a href="Animating.html">Animating</a></li>
+            <li><a href="TopDown.html">Top-Down shooter</a></li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <ul>
+            <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+            <li><a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a></li>
+            <li><a href="QuizSelection.html">Quizs</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p>This is the address</p>
+      </div>
+    </div>
+    <div class="row footer-bottom col-12 col-s-12">
+      <p><i class="fa fa-copyright"></i><span id="date"></span> Kelsey</p>
+    </div>
+  </footer>
+  <script src="../Scripts/script.js"></script>
+  <script src="../Scripts/youtubeApi.js"></script>
+  <script src="https://apis.google.com/js/client.js"></script>
+
+  <script src="https://apis.google.com/js/api.js"></script>
+</body>
+</html>

@@ -1,0 +1,490 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  height: 100%;
+  margin: 0;
+  background-image: url("../Images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-color: darkgrey;
+  scroll-behavior: smooth;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid white;
+}
+
+img:hover {
+  cursor: pointer;
+}
+
+iframe {
+  height: 100%;
+  width:100%;
+  position: absolute;
+}
+
+a {
+  color: rgb(204, 139, 0);
+}
+
+a:visited {
+  color: rgb(36, 82, 173);
+}
+
+button {
+  font-size: medium;
+  font-weight: bold;
+  background-color: royalblue;
+  color: #ffff;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  transition: 0.3s;
+  margin: auto;
+  margin-top: 20px;
+  width: 90%;
+  height: 50px;
+  display: block;
+}
+
+button:hover {
+  font-size: large;
+  cursor: pointer;
+}
+
+footer {
+  background-color: #333;
+  width: 100%;
+  bottom: 0%;
+  padding: 15px;
+  position: relative;
+  color: white;
+}
+
+footer p {
+  text-align: center;
+}
+
+ul.inline li {
+  display: inline;
+}
+
+footer ul li{
+  list-style-type: none;
+  margin-right: 15px;
+  padding: 0;
+}
+
+/*form*/
+input[type=text], input[type=email] {
+  width: 100%;
+  margin: 12px 0px 12px 0px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+input[type=text]:focus, input[type=email]:focus, textarea:focus {
+  border-color: rgb(75, 64, 146);
+  border-width: 2px;
+}
+
+input[type=radio] {
+  margin: 20px;
+}
+
+input[type=submit] {
+  background-color: royalblue;
+  color: white;
+  font-size: medium;
+  width: 100%;
+  padding: 13px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: royalblue;
+}
+
+textarea {
+  font-family: sans-serif;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+iframe {
+  width: 100%;
+  height: 360px;
+  display: block;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+/*end form*/
+[id*="btn"]:hover {
+  font-size: medium;
+}
+
+/*alert pop-up that will catch the attention of a user*/
+#alert {
+  display: block;
+  padding: 15px;
+  text-align: center;
+  border: 3px solid red;
+  visibility: hidden;
+}
+
+/*remove the padding from the list for better mobile alignment*/
+#keywords-list ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+/*main content area*/
+#panel {
+  background: rgba(17, 17, 17, 0.9);
+  width: 65%;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  padding: 15px;
+  position: relative;
+  color: white;
+  z-index: 0;
+}
+
+/*display an image overtop all other content in the center of the screen*/
+#image-over {
+  background: rgba(17, 17, 17, 0.9);
+  width: 65%;
+  height: 700px;
+  left: 50%;
+  top: 50%;
+  margin-left: -32.5%;
+  margin-top: -350px;
+  padding: 25px;
+  color: white;
+  border-radius: 35px;
+  display: none;
+  position: fixed;
+  z-index: 2;
+}
+
+#click-img {
+  height: 500px;
+  width: auto;
+}
+
+/*code from  w3schools.com
+url: https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy
+author: Unkown
+published: Unknown
+date created: Unkown*/
+/*operators table*/
+#operators-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#operators-table td, #operators th {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+#operators-table tr:nth-child(even){background-color: #333;}
+
+#operators-table tr:hover{background-color: rgb(75, 64, 146);}
+
+#operators-table th {
+  background-color: #f1f1f1;
+  padding: 12px 0px 12px 0px;
+  color: black;
+  text-align: left;
+}
+/*end operators table*/
+
+#close:hover {
+  cursor: pointer;
+}
+
+#close {
+  display: none;
+}
+
+#close-btn {
+  float: right;
+  width: 100px;
+}
+
+#results {
+  overflow: auto;
+  height: 1300px;
+}
+
+.challenge_answer {
+  background-color: lightgray;
+  margin: 10px;
+  padding: 5px;
+  color: black;
+  display: none;
+}
+
+.solution {
+  margin: auto;
+}
+
+.large-font {
+  font-size: 30px;
+}
+
+.img-small {
+  width: 40%
+}
+
+ul > li.row {
+  list-style-type: none;
+}
+
+/*make the iframe work responsivly*/
+.gif {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56%;
+  position: relative;
+}
+
+/*Copyright (c) 2020 by Milan (https://codepen.io/Oddgson/pen/VPrYbv)
+Permission is hereby granted, free of charge, to any person obtaining a copy 
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
+copies of the Software, and to permit persons to whom the Software is furnished
+to do so, subject to the following conditions: The above copyright notice and 
+this permission notice shall be included in all copies or substantial portions 
+of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO 
+EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES 
+OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+DEALINGS IN THE SOFTWARE.*/
+/*seperator*/
+.divider {
+	height: 1px;
+  margin-top: 90px;
+  margin-bottom: 90px;
+	position: relative;
+  z-index: 0;
+}
+
+.div-transparent:before {
+  background-image: linear-gradient(to right, transparent, #f1f1f1, transparent);
+	content: "";
+	width: 90%;
+  height: 1px;
+	top: 0;
+	left: 5%;
+	right: 5%;
+  position: absolute;
+}
+/*end seperator*/
+/*end main content area*/
+
+/*code from  w3schools.com
+url: https://www.w3schools.com/css/css_rwd_grid.asp
+author: Unknown
+publisher: Unknown
+date created: Unkown*/
+/* For Moblie*/
+@media only screen and (max-width: 600px){
+  /*responsive table*/
+  td {
+    display: block;
+    text-align: left;
+    padding: 10px 20px 10px 260px;
+    position: relative;
+  }
+
+  td:first-child {
+    background-color: rgb(75, 64, 146);
+  }
+
+  th {
+    display: none;
+  }
+  /*end responsive table*/
+
+  #panel {
+    width: 100%;
+  }
+
+  ul, ol {
+    padding: 0;
+  } 
+
+  /*keep nested list indented*/
+  ul > ul, ul > ol, ol > ul, ol > ol {
+    padding: 15px;
+  }
+
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+
+/* For tablets: */
+@media only screen and (min-width: 600px) {
+  .col-m-1 {width: 8.33%;}
+  .col-m-2 {width: 16.66%;}
+  .col-m-3 {width: 25%;}
+  .col-m-4 {width: 33.33%;}
+  .col-m-5 {width: 41.66%;}
+  .col-m-6 {width: 50%;}
+  .col-m-7 {width: 58.33%;}
+  .col-m-8 {width: 66.66%;}
+  .col-m-9 {width: 75%;}
+  .col-m-10 {width: 83.33%;}
+  .col-m-11 {width: 91.66%;}
+  .col-m-12 {width: 100%;}
+}
+
+/* For desktop: */
+@media only screen and (min-width: 769px) {
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+} 
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*slide show*/
+/*url https://www.w3schools.com/howto/howto_js_slideshow_gallery.asp
+author: Unkown
+published: Unkown
+date created: Unkown*/
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.number-text {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}

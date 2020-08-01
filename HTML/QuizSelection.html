@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
+  <link rel="stylesheet" type="text/css" href="../CSS/topNav.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/leftNav.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>COMP 266/quiz</title>
+  <script src="../Scripts/JQuery.js"></script>
+  <script src="../Scripts/myJQuery.js"></script>
+</head>
+<body>
+  <!--top navbar-->
+  <nav class="row" id="top-navbar">
+    <ul>
+      <li class="right">
+        <a href="javascript:void(0);" class="icon" onclick="topNavCollapse()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </li>
+      <li><a href="index.html">Main</a></li>
+      <li><a href="CSharp.html">C#</a></li>
+      <li><a href="UnityEngine.html">Unity Engine</a></li>
+      <li><a href="Animating.html">Animating</a></li>
+      <!--this will be a drop down listing the names of each projects-->
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Projects</a>
+        <div class="dropdown-content">
+          <a href="TopDown.html">Top-Down shooter</a>
+        </div>
+      </li> 
+      <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+      <li>
+        <!--off site link-->
+        <a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a>
+      </li> 
+      <li class="active"><a href="QuizSelection.html">Quizs</a></li>
+      <li class="right"><a href="Contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <!--click to show the side navbar on mobile-->
+  <div id="show-side-nav"></div>
+  <div id="panel">
+    <h1>Quizs</h1>
+    <p>Here is a list of all the different quizzes</p>
+    <div class="divider div-transparent"></div>
+    <!--C#-->
+    <h2 id="csharp">C#</h2>
+    <!--buttons-->
+    <div class="row list">
+      <!--top-->
+      <div class="col-2 col-s-6" >
+        <button id="btn0">Console application</button>
+      </div>
+      <div class="col-2 col-s-6" >
+        <button id="btn1">Comments</button>
+      </div>
+      <div class="col-2 col-s-6" >
+        <button id="btn2">Key Words</button>
+      </div>
+      <div class="col-2 col-s-6" >
+        <button id="btn3">Variables</button>
+      </div>
+      <div class="col-2 col-s-6" >
+        <button id="btn4">Arrays</button>
+      </div>
+      <div class="col-2 col-s-6" >
+        <button id="btn5">Operators</button>
+      </div>
+      <!--bottom-->
+      <div class="col-2 col-s-6" >
+        <button id="btn6">Conditionals</button>
+      </div>
+      <div class="col-2 col-s-6" >
+        <button id="btn7">Loops</button>
+      </div>
+      <div class="col-2 col-s-6" >
+        <button id="btn8">Functions</button>
+      </div>
+      <div class="col-2 col-s-6" >
+        <button id="btn9">Classes</button>
+      </div>
+      <div class="col-2 col-s-6" >
+        <button id="btn10">Objects</button>
+      </div>
+      <div class="col-2 col-s-6" >
+        <button id="btn11">polymorphism</button>
+      </div>
+    </div>
+    <div class="divider div-transparent"></div>
+    <!--unity engine-->
+    <h2 id="unity-engine">Unity Engine</h2>
+    <div class="row list">
+      <!--top-->
+      <div class="col-2 col-s-6">  
+        <button id="btn12">Navigation</button>
+      </div>
+      <div class="col-2 col-s-6">
+        <button id="btn13">Windows</button>
+      </div>
+      <div class="col-2 col-s-6">
+        <button id="btn14">Tags</button>
+      </div>
+      <div class="col-2 col-s-6">
+        <button id="btn15">Layers</button>
+      </div>
+      <div class="col-2 col-s-6">
+        <button id="btn16">Components</button>
+      </div>
+      <div class="col-2 col-s-6">
+        <button id="btn17">Prefabs</button>
+      </div>
+    </div>
+    <div class="divider div-transparent"></div>
+    <!--top-downshooter-->
+    <h2 id="top-down">Top-Down Shooter</h2>
+    <div class="row list">
+      <!--top-->
+      <div class="col-2 col-s-6">  
+        <button id="btn18">Player Movement</button>
+      </div>
+      <div class="col-2 col-s-6">
+        <button id="btn19">Player Shooting</button>
+      </div>
+      <div class="col-2 col-s-6">
+        <button id="btn20">Health</button>
+      </div>
+      <div class="col-2 col-s-6">
+        <button id="btn21">Damage</button>
+      </div>
+      <div class="col-2 col-s-6">
+        <button id="btn22">Enemy Movement</button>
+      </div>  
+      <div class="col-2 col-s-6">  
+        <button id="btn23">Interactables</button>
+      </div>  
+      <!--middle-->
+      <div class="col-2 col-s-6">  
+        <button id="btn24">Obsticals</button>
+      </div>  
+      <div class="col-2 col-s-6">  
+        <button id="btn25">Drops</button>
+      </div>  
+      <div class="col-2 col-s-6">  
+        <button id="btn26">Spawning</button>
+      </div> 
+    </div>
+  </div>
+   <!--footer-->
+   <footer class="row" id="footer">
+    <div class="row footer-top">
+      <div class="col-4 col-m-8 col-s-12">
+        <div class="row">
+          <p>
+            Using this site you gain the knowledge you need to make 2D games in
+            Unity. We provide you with tutorials that were made by us but also
+            provide links to other sources that you will find extremly helpful.
+            In the <a href="VideoTutorials.html">video turotials</a> is where
+            you can find the links to various playlist that will help you on
+            your journy.
+          </p>
+        </div>
+        <div class="row">
+          <ul class="inline">
+            <li><a href=""><i class="fa fa-twitter-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-facebook-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-instagram fa-2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-4 col-m-12 col-s-12">
+        <p>
+          After getting introduced to everything we are going to combine all the 
+          new skill you've accquired into makeing two project games. One will be 
+          a 2D side scroller, and the other will the a top-down shooter. I if you
+          are completly new to everything about this I suggest you start with C# 
+          here and move on accordingly. 
+        </p>
+      </div>
+      <div class="col-4 col-m-12 col-s-12">
+        <h2>Navigation</h2>
+        <div class="col-6">
+          <ul>
+            <li><a href="CSharp.html">C#</a></li>
+            <li><a href="UnityEngine.html">Unity Engine</a></li>
+            <li><a href="Animating.html">Animating</a></li>
+            <li><a href="TopDown.html">Top-Down shooter</a></li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <ul>
+            <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+            <li><a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a></li>
+            <li><a href="QuizSelection.html">Quizs</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p>This is the address</p>
+      </div>
+    </div>
+    <div class="row footer-bottom col-12 col-s-12">
+      <p><i class="fa fa-copyright"></i><span id="date"></span> Kelsey</p>
+    </div>
+  </footer>
+  <script src="../Scripts/script.js"></script>
+  <script src="../Scripts/Question.js"></script>
+  <script src="../Scripts/QuizController.js"></script>
+  <script src="../Scripts/app.js"></script>
+</body>
+</html>
