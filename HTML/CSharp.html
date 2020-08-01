@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" type="text/css" href="../CSS/style.css" />
+  <link rel="stylesheet" type="text/css" href="../CSS/topNav.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/leftNav.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>COMP 266/C#</title>
+  <script src="../Scripts/JQuery.js"></script>
+  <script src="../Scripts/myJQuery.js"></script>
+</head>
+<body>
+ <!--top navbar-->
+ <nav class="row" id="top-navbar">
+  <ul>
+    <li class="right">
+      <a href="javascript:void(0);" class="icon" onclick="topNavCollapse()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </li>
+    <li><a href="index.html">Main</a></li>
+    <li class="active"><a href="CSharp.html">C#</a></li>
+    <li><a href="UnityEngine.html">Unity Engine</a></li>
+    <li><a href="Animating.html">Animating</a></li>
+    <!--this will be a drop down listing the names of each projects-->
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Projects</a>
+      <div class="dropdown-content">
+        <a href="TopDown.html">Top-Down shooter</a>
+      </div>
+    </li> 
+    <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+    <li>
+      <!--off site link-->
+      <a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a>
+    </li> 
+    <li><a href="QuizSelection.html">Quizs</a></li>
+    <li class="right"><a href="Contact.html">Contact</a></li>
+  </ul>
+</nav>
+  <!--
+    fixed to the left side of the screen, will hide until tapped for
+    mobile when it is the first time the user comes to the site on mobile 
+    point out that there is the side navbar
+  -->
+  <!--sections right side navbar-->
+  <nav class="left-navbar" id="left-navbar">
+    <ul title="navbar-side">
+      <li><i class="fa fa-window-close fa-5x" id="close"></i></li>
+      <li><a href="#console">Console application</a></li>
+      <li><a href="#comments">Comments</a></li>
+      <li><a href="#keyWords">Key words</a></li>
+      <li><a href="#variables">Variables</a></li>
+      <li><a href="#arrays">Arrays</a></li>
+      <li><a href="#operators">Operators</a></li>
+      <li><a href="#conditionals">Conditionals</a></li>
+      <li><a href="#enum">enum</a></li>
+      <li><a href="#loops">Loops</a></li>
+      <li><a href="#functions">Functions</a></li>
+      <li><a href="#classes">Classes</a></li>
+      <li><a href="#objects">Objects</a></li>
+      <li><a href="#getters_setters">Getters & Setters</a></li>
+      <li><a href="#coroutines">Coroutines</a></li>
+      <li><a href="#inheritance-polymorphism">Inheritance & Polymorphism</a></li>
+      <li><a href="#bestPractice">Best Practice</a></li>
+    </ul>
+  </nav>
+  <!--overlay an image at the center of the screen-->
+  <div id="image-over">
+    <button id="close-btn">Close</button>
+    <div class="row">
+      <div class="col-12">
+        <img src="#" alt="" id="click-img">
+      </div>
+    </div>
+  </div>
+  <!--button to be clicked on to show the side nav while in mobile-->
+  <div id="show-side-nav"></div>
+  <div id="panel">
+    <div class="col-12 col-m-12 col-s-12">
+      <h1>Learning C#</h1>
+      <p>
+        Here you will be learning the basics of the C# programming language. After
+        completion of this section you will have the knowledge to write your own
+        simple C# programs. You will also be equiped with the skills to start 
+        following along as we program games in Unity. This section by no means 
+        goes over Everything in the language and will only provide you with the 
+        knowledge need to follow in the projects. After completion of this section 
+        I suggest you move into the <a href="../HTML/UnityEngine.html">Unity Engine</a>.
+        At the end feel free to test your understanding with our 
+        <a href="QuizSelection.html#csharp">quizzes</a>
+      </p>
+    </div>
+    <div class="col-12 col-m-12 col-s-12">
+      <h2>Prerequisites</h2>
+      <ul>
+        <li>install <a href="https://www.youtube.com/watch?v=2PVPz8Pnnrw">Visual Studio</a></li>
+      </ul>
+    </div>
+    <div id="console" class="row">
+      <div class="col-12 col-m-12 col-s-12">
+        <h2>Creating a console application</h2>
+      </div>
+      <div class="row">
+        <!--create project-->
+        <div class="col-6 col-m-6 col-s-12">
+          <h3>Create Project</h3>
+          <p>First, open Visual Studio and click Create a new project</p>
+          <img src="../Images/createConsole/create_new_project.png" 
+              alt="Visual Studio 2019 start screen with red arrow pointed at 
+                  'Create a new project'">
+        </div>
+        <!--project type-->
+        <div class="col-6 col-m-6 col-s-12">
+          <h3>Project Type</h3>
+          <p>Next, you will want to create a C# project, look for the following</p>
+          <img src="../Images/createConsole/type_of_project.png" 
+              alt="Visual Studio 2019 project creation window. Set to create a
+                  'Console App (.Net Core)' from C sharp">
+        </div>
+      </div>
+      <!--bottom bit-->
+      <div class="col-12 col-m-12 col-s-12 row">
+        <p>
+          Then you will just have to give the file a name, I named mine learning 
+          CSharp. After that just click create. Now you should something like 
+          this. But don't worry about the syntax.
+        </p>
+        <img src="../Images/createConsole/main_method.png" 
+            alt="C Sharp codeing example of the Main method">
+        <p>
+          If you press F5 on the keyboard then the program should run and print
+          <i>Hello World</i> to the console. Anything that you pass into
+          Console.WriteLine() will be printed to the console. Any and all code that
+          you want to execute should be written in the main method.
+        </p>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://docs.microsoft.com/en-us/visualstudio/ide/quickstart-csharp-console?view=vs-2019">
+            Quickstart: Use Visual Studio to create your first c# console app
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="comments" class="row">
+      <!--header & description-->
+      <div class="col-12 col-m-12 col-s-12">
+        <h2>Comments</h2>
+        <p>There are two types of comments in the C# language.</p>
+        <ol>
+          <li>Single line comment - //</li>
+          <li>Multi-line comment - /**/</li>
+        </ol>
+        <p>
+          Comments are not executed at run time, they are simply there to make the 
+          code easier to understand, and are most helpful to those that did not write
+          the program. A good comment will tells us what a <a href="#classes">class</a> 
+          or <a href="#functions">method</a> does, but not how this task is accomplished. 
+        </p>
+      </div>
+      <!--single line-->
+      <div class="col-12 col-m-12 col-s-12">
+        <h3>Single Line Comment</h3>
+        <p>
+          The single line comment is used when we have somthing short to say and 
+          is best left under 80 characters
+        </p>
+        <img src="../Images/commentExamples/single_line_comment_example.png" 
+            alt="C Sharp example of a single line comment, '//'">
+      </div>
+      <!--multi-line-->
+      <div class="col-12 col-m-12 col-s-12">
+        <h3>Multi-line Comment</h3>
+        <p>
+          The multi-line comment is used when we have somthing long to say that 
+          will take up more than 80 characters. Each line should be 80 characters
+          at most. <i>Why the 80 characters?</i> Becuase lots of time a developer
+          will have to file tabs open in their IDE or text editor and this will 
+          prevent them form having to side scroll, trust me it's annoying.
+        </p>
+        <img src="../Images/commentExamples/double_line_comment_example.png" 
+            alt="C Sharp example of a multi-line comment, '/**/'">
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_comments.asp">
+            C# Comments
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="keyWords" class="row">
+      <!--header & description-->
+      <div class="col-12 col-m-12 col-s-12">
+        <h2>Key Words</h2>
+        <p>
+          Key words are words that have a special meaning and they cannot be used as
+          the name for anything. This does not mean however that names cannot contain
+          that word, note that c# is also case sensitive so <i>int</i> is not the same 
+          as <i>Int</i> and could be used as the name for a variable.
+        </p>
+      </div>
+      <div class="col-12 col-m-12 col-s-12">
+        <h3>Some key words you will be using</h3>
+      </div>
+      <!--three lists of common keywords-->
+      <!--make all the elements links to w3schools description-->
+      <div id="keywords-list">
+        <div class="col-4 col-m-4 col-s-4">
+          <ul>
+            <li>class</li>
+            <li>delegate</li>
+            <li>event</li>
+            <li>if</li>
+            <li>new</li>
+            <li>override</li>
+            <li>try</li>
+            <li>void</li>
+            <li>case</li>
+            <li>const</li>
+            <li>do</li>
+            <li>float</li>
+            <li>is</li>
+          </ul>
+        </div>
+        <div class="col-4 col-m-4 col-s-4">
+          <ul>
+            <li>null</li>
+            <li>switch</li>
+            <li>continue</li>
+            <li>double</li>
+            <li>for</li>
+            <li>in</li>
+            <li>private</li>
+            <li>return</li>
+            <li>this</li>
+            <li>while</li>
+            <li>using</li>
+            <li>bool</li>
+            <li>char</li>
+          </ul>
+        </div>
+        <div class="col-4 col-m-4 col-s-4">
+          <ul>
+            <li>else</li>
+            <li>false</li>
+            <li>foreach</li>
+            <li>int</li>
+            <li>throw</li>
+            <li>static</li>
+            <li>break</li>
+            <li>default</li>
+            <li>enum</li>
+            <li>public</li>
+            <li>string</li>
+            <li>true</li>
+            <li>virtual</li>
+          </ul>
+        </div>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.geeksforgeeks.org/c-sharp-keywords/">
+            C# | Keywords
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="variables" class="row">
+      <!--header & description-->
+      <div class="col-12 col-m-12 col-s-12 row">
+        <h2>Variables</h2>
+        <p>
+          Variables are somthing that store information that is used during to 
+          execution of the program. As the name suggests the information stored 
+          can change thought execution hence the <i>vari</i>, but there are others
+          that work the same way but remain constant throught the entire execution 
+          these are called constants.
+        </p>
+        <p>
+          All <b>variables</b> & <b>constants</b> have a type, this sepcefies what 
+          kind of data can be stored. Here we will go over the ones you'll be using.
+        </p>
+      </div>
+      <!--int-->
+      <div class="col-12 col-m-12 col-s-12 row">
+        <h3>int:</h3>
+        <p>
+          This type is for storing while numbers i.e. [1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 ,9 0]
+        </p> 
+        <img src="../Images/typeExamples/example_of_integer.png" 
+            alt="C Sharp example of the Integer type 'int x = 8;'">
+      </div>
+      <!--double-->
+      <div class="col-12 col-m-12 col-s-12 row">
+        <h3>double:</h3>
+        <p>This type is able to store fractional number up to 15 digits.</p>
+        <img src="../Images/typeExamples/example_of_double.png" 
+            alt="C Sharp example of the double type 'double x = 3.1415926;'">
+      </div>
+      <!--float-->
+      <div class="col-12 col-m-12 col-s-12 row">
+        <h3>float:</h3>
+        <p>This also stores fractional numbers but only up to 6-7 digits.</p>
+        <img src="../Images/typeExamples/example_of_float.png" 
+            alt="C Sharp example of the float type 'float x = 7.342658;'">
+      </div>
+      <!--char-->
+      <div class="col-12 col-m-12 col-s-12 row">
+        <h3>char:</h3>
+        <p>
+          This type is used for storing a single character (<strong>NOTE: CAN BE 
+          ASSIGNED ASCII CHARACTER CODES THROUGHT <a href="#casting">CASTING</a></strong>).
+        </p>
+        <img src="../Images/typeExamples/example_of_char.png" 
+            alt="C Sharp example of the character type 'char c = 'a''">
+      </div>
+      <!--string-->
+      <div class="col-12 col-m-12 col-s-12 row">
+        <h3>string:</h3>
+        <p>
+          Used to store a series of characters, this could be a single word or a 
+          sentance (<strong>NOTE: IF THE VALUE IS GOING TO BE CHANGING DURING 
+          EXECUTION USE 
+          <a href="https://www.tutorialsteacher.com/csharp/csharp-stringbuilder">
+            STRING BUILDER</a></strong>).
+        </p>
+        <img src="../Images/typeExamples/example_of_string.png" 
+            alt="C Sharp example of the string type 'string name = ''Hope'''">
+      </div>
+      <!--bool-->
+      <div class="col-12 col-m-12 col-s-12 row">
+        <h3>boolean:</h3>
+        <p>This type can be one of two values, either <b>true</b> or <b>false</b>.</p>
+        <img src="../Images/typeExamples/example_of_bool.png" 
+            alt="C Sharp example of the boolean type 'bool isAttacking = false;'">
+      </div>
+      <!--casting-->
+      <div id="casting" class="col-12 col-m-12 col-s-12 row">
+        <h3>Casting:</h3>
+        <p>
+          Casting is when we explixetly convert one type to another.Though you 
+          note that this does not work for all type conversions.
+        </p>
+        <img src="../Images/typeExamples/example_of_casting.png" 
+            alt="C Sharp example of casting float to int 'int x = (int) someFloat'">
+      </div>
+      <!--section challenge-->
+      <div class="row">
+        <h3>Section Challenge #1</h3>
+        <p>
+          Here I want you to create three strings fname, lname, and fullName. Where
+          fullName is fname concatinated with lname.
+        </p>
+        <div>
+          <button class="solution-button">Solution</button>
+          <!--will be hidden until Solutions is click-->
+          <div class="challenge_answer row">
+            <!--img-->
+            <div class="col-4 col-s-12">
+              <img src="../Images/typeExamples/section_challenge.jpg"
+                alt="solution to the challenge. Three string variables fname, lname
+                     and fullName, where fullName is fname concatinated with lname">
+            </div>
+            <!--desc-->
+            <div class="col-8 col-s-12">
+              <p>
+                All you need to do is add a plus sign and and empty string (for a
+                space) then another plus sign for the lname variable.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_variables.asp">
+            C# Variables
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_data_types.asp">
+            C# Data Types
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_type_casting.asp">
+            C# Type Casting
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="arrays" class="row">
+      <h2 class="col-12 col-m-12 col-s-12">Arrays</h2>
+      <!--description and image-->
+      <div class="col-12 col-m-12 col-s-12">
+        <p>
+          Now you will be learning about array. An array is a way of storing multiple
+          elements of the same type.
+        </p>
+        <img src="../Images/arrays/decleration_example.png" 
+            alt="C Sharp example of an array, 'int[] nums = new int[3]'">
+      </div>
+      <!--initialization & Accessing-->
+      <div class="row">
+        <div class="col-6 col-m-6 col-s-12">
+          <h3>Array initialization</h3>
+          <p>
+            You should note that the key word used to specefy the type of data can be
+            any of the others discussed in the previous section. They can even be of 
+            some abstract type, but don't worry about that for now 
+            you'll learn about them later. There are also two ways of initializing
+            arrays one will specify the values stored and the other specefies how
+            many elements can be stored in the array.
+          </p>
+          <img src="../Images/arrays/initialization.png" 
+              alt="C Sharp example of array initialization">
+        </div>
+        <div class="col-6 col-m-6 col-s-12">
+          <h3>Accessing Elements</h3>
+          <p>
+            To access elements of an array we use their index which starts from 0 and
+            goes to the length of the array - 1.
+          </p>
+          <img src="../Images/arrays/setting_by_index.png" 
+               alt="C Sharp setting array element by index -> nums[0] = 9;">
+        </div>
+      </div>
+      <!--length and string to Array-->
+      <div class="row">
+        <div class="col-6 col-m-6 col-s-12">
+          <h3>Length Property</h3>
+          <p>
+            As I just mentioned the length of an array you might like to know that there
+            is actually a way to get the length of any array. This is done by typeing
+            the name of the array you want the length of with <em>.Length</em> to get
+            the number of elements in the array;
+          </p>
+          <img src="../Images/arrays/array_length.png" 
+              alt="C Sharp example of getting length of an array 'arrayName.Length'">
+        </div>
+        <div class="col-6 col-m-6 col-s-12">
+          <h3>String to Array</h3>
+          <p>
+            But there are many other things you can do with arrays. For example you can 
+            turn a string into an array of character like so.
+          </p>
+          <img src="../Images/arrays/string_to_char_array.png" 
+              alt="C Sharp example of turning a string into char array">
+        </div>
+      </div>
+      <div class="col-12 col-m-12 col-s-12 row">
+        <h3>More About Arrays</h3>
+        <p>
+          Arrays are a fixed size, this means that they do not dynamicaly
+          resize to new elements. However you are able to write a method that
+          will allow the array to change its size depending on how much storage 
+          space is needed.
+        </p>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_arrays.asp">
+            C# Arrays
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="operators" class="row"> 
+      <h2>Operators</h2>
+      <p>
+        Operators are used to preform operations on various types. For example using
+        the addition operator + can be used on two strings to concatinate them.
+      </p>
+      <img src="../Images/operators/string_concatinate_no_space.png" 
+          alt="C Sharp strings concatinated with no space">
+      <p>
+        You may however see a problem with the output of full name, there is no 
+        space between the two names so you must add one manualy.
+      </p>
+      <img src="../Images/operators/string_concatinate_with_space.png" 
+          alt="C Sharp strings concatinated with space added">
+      <h3>Basic arithmetic</h3>
+      <table id="operators-table">
+        <tr>
+          <th>Name</th>
+          <th>Operator</th>
+          <th>Description</th>
+          <th>Example</th>
+          <th>Output</th>
+        </tr>
+        <tr>
+          <td>Addition</td>
+          <td>+</td>
+          <td>Adds two values together</td>
+          <td>5 + 10</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td>Subtraction</td>
+          <td>-</td>
+          <td>subtracts two variables</td>
+          <td>50 - 3</td>
+          <td>47</td>
+        </tr>
+        <tr>
+          <td>Division</td>
+          <td>/</td>
+          <td>divides two values</td>
+          <td>14 / 2</td>
+          <td>7</td>
+        </tr>
+        <tr>
+          <td>Multiplication</td>
+          <td>*</td>
+          <td>multiplies two variables</td>
+          <td>4 * 3</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>Increment</td>
+          <td>++</td>
+          <td>adds one to some number variable</td>
+          <td>x++ OR ++x</td>
+          <td>x = x + 1</td>
+        </tr>
+        <tr>
+          <td>Decrement</td>
+          <td>--</td>
+          <td>subtracts one from some number variable</td>
+          <td>x-- OR --x</td>
+          <td>x = x - 1</td>
+        </tr>
+        <tr>
+          <td>Addition assignment</td>
+          <td>+=</td>
+          <td>adds something y to x</td>
+          <td> x += 4</td>
+          <td>x = x + 4</td>
+        </tr>
+        <tr>
+          <td>Subtraction assignment</td>
+          <td>-=</td>
+          <td>subtracts somehting y from x</td>
+          <td>x -= 6</td>
+          <td>x = x - 6</td>
+        </tr>
+        <tr>
+          <td>Product assignment</td>
+          <td>*=</td>
+          <td>multiples some x, y times</td>
+          <td>x *= 7</td>
+          <td>x = x * 7</td>
+        </tr>
+        <tr>
+          <td>Division assignment</td>
+          <td>/=</td>
+          <td>divides some x, by y</td>
+          <td>x /= 8</td>
+          <td>x = x / 8</td>
+        </tr>
+        <tr>
+          <td>Mod</td>
+          <td>%</td>
+          <td>returns the remainder</td>
+          <td>3 % 2</td>
+          <td>1</td>
+        </tr>
+      </table>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_operators.asp">
+            C# Operators
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="conditionals" class="row">
+      <h2>Conditionals</h2>
+      <p>
+        There are times during the execution of a program that we want to branch
+        out, say for example we want to determine if some number is even or odd.
+        If the number is odd we want to print odd to the console otherwise pring 
+        even.
+      </p>
+      <!--if...else-->
+      <div class="row">
+        <h3>The if else statment</h3>
+        <div class="col-4">
+          <img src="../Images/conditionals/example_of_if_else.png" 
+            alt="C Sharp example of if else statment">
+        </div>
+        <p class="col-8">
+          Essentially the if else statment is <i>if(some condition) do this else do 
+          this</i>. This should all be written in the main method.
+        </p>
+      </div>
+      <!--switch-->
+      <div class="row">
+        <h3>Switch statment</h3>
+        <div class="col-4">
+          <img src="../Images/conditionals/example_of_switch.png" 
+            alt="C Sharp example of a switch" class="left">
+        </div>
+        <p class="col-8">
+          The switch statment takes in some expression and uses it to determine which
+          of code to execute. In general you'll want to make use of a switch instead
+          of having large if else statment because it is more readable and more. The
+          following is an example of a switch.
+        </p>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_conditions.asp">
+            C# If...Else
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_switch.asp">
+            C# Switch
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="enum" class="row">
+      <h2>enum</h2>
+      <p class="col-8">
+        Enum is like a constant they are read only const variables. They work well
+        with switch statments. They can be written outside of the class as well as 
+        inside them. <b>needs way more content!</b>
+      </p>
+      <div class="col-4">
+        <img src="../Images/enum/enum_with_switch_out.png" 
+          alt="C Sharp example of enum outside the class working with a switch statment">
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_enums.asp">
+            C# Enum
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="loops" class="row">
+      <!--header, description-->
+      <div class="col-12">
+        <h2>Loops</h2>
+        <p>
+            loops are used when we want to execute some block of code multiple times
+            before moving on.
+        </p>
+      </div>
+      <!--for & foreach loops-->
+      <div class="row">
+        <div class="col-6">
+          <h3>for loop</h3>
+          <p>
+              for loops are usful when dealing with arrays and you need the index of each
+              element.
+          </p>
+          <img src="../Images/loops/for.png" alt="C Sharp example of for loop">
+        </div>
+        <div class="col-6">
+          <h3>foreach loop</h3>
+          <p>
+              foreach loops are also usful when working wiht arrays but the index of each
+              element is not needed i.e. you want to go over every element.
+          </p>
+          <img src="../Images/loops/foreach.png" alt="C Sharp example of foreach loop">
+        </div>
+      </div>
+      <!--while & do...while loops-->
+      <div class="row">
+        <div class="col-6">
+          <h3>while loop</h3>
+          <p>
+              Basically just a different way of writting for loops, but they are different
+              and one is better than the other depenting on the situation.
+          </p>
+          <img src="../Images/loops/while.png" alt="C Sharp example of while loop">
+        </div>
+        <div class="col-6">
+          <h3>do...while loop</h3>
+          <p>
+              These function as while loops but they are garented to execute at least
+              one time. Everything in the do block is executed and then the continuation
+              conditional is checked.
+          </p>
+          <img src="../Images/loops/do_while.png" alt="C Sharp example of do while loop">
+        </div>
+      </div>
+      <!--section challenge-->
+      <div class="row">
+        <h3>Section Challenge #1</h3>
+        <p>
+          For this challenge I want you to make an array of length 10 and populate
+          it with the numbers 0 - 9 using a for loop. Then print them to the console.
+        </p>
+        <div>
+          <button class="solution-button">Solution</button>
+          <!--will be hidden until Solutions is click-->
+          <div class="challenge_answer row">
+            <!--img-->
+            <div class="col-4 col-s-12">
+              <img src="../Images/loops/section_challenge.jpg"
+                alt="C Sharp createtion of an array, size 10, using a for loop to store
+                    the numbers 0 through 9 in it">
+            </div>
+            <!--desc-->
+            <div class="col-8 col-s-12">
+              <p>
+                using Console.WriteLine() we can print the values you to the console,
+                and using only the i variable we can assign the correct value to the
+                appropriate index.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_while_loop.asp">
+            C# While Loop
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_for_loop.asp">
+            C# For Loop
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="functions" class="row"> 
+      <!--header, description-->
+      <div class="col-12">
+        <h2>Functions</h2>
+        <p>
+          A functino is a named block of code that when called preforms some takes
+          Functiosn can either be passed some external values that they use or they
+          can operate competly independant of outside variables. They can also be 
+          used to return some value or return nuthing.
+        </p>
+      </div>
+      <!--the images-->
+      <div class="row">
+        <div class="col-4">
+          <img src="../Images/functions/function.png" alt="C Sharp example of functions">
+        </div>
+        <div class="col-4">
+          <img src="../Images/functions/function.png" alt="C Sharp example of functions">
+        </div>
+        <div class="col-4">
+          <img src="../Images/functions/function.png" alt="C Sharp example of functions">
+        </div>
+      </div>
+      <!--void key word-->
+      <div class="col-12">
+        <h3>void</h3>
+        <p>
+          The void key word is used with functions to explain that no value is to
+          be returned.
+        </p>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_methods.asp">
+            C# Methods
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_method_parameters.asp">
+            C# Method Parameters
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_method_overloading.asp">
+            C# Method Overloading
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="classes" class="row">
+      <h2>Classes</h2>
+      <div class="col-8 col-s-12">
+        <p>
+          A class is a way of grouping variables and functions that work together.
+          The variables that are defined in the class are called fields or attributes
+          , when a class is created you can make constructors that are used to make a 
+          new instance of that class. When you create a new class it will need to
+          be saved with the <i>.cs</i> as the file type. The class is a blueprint
+          that is used to make an object, everything that you do in C# is done
+          with classes and <a href="#objects">objects</a>. A class is created 
+          useing the <i>class</i> keyword.
+        </p>
+      </div>
+      <div class="col-4 col-s-12">
+        <img src="../Images/class/class.png" alt="C Sharp example of a class">
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_oop.asp">
+            C# OOP
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_classes.asp">
+            C# Classes and Objects
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_inheritance.asp">
+            C# Inheritance
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_polymorphism.asp">
+            C# Polymorphism
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_abstract.asp">
+            C# Abstraction
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="objects" class="row">
+      <h2>Objects</h2>
+      <div class="col-8 col-s-12">
+        <p>
+          An object is an instance of a class, they use the class as a blueprint
+          to create the object. Objects can be create in any number of ways using
+          different types of constructors. A class can have more than one constructor
+          but each constructor must be different from the other(s). As C# is an
+          <abbr title="Object Oriented Programming">OOP</abbr> language this is
+          were all its strength comes from. OOP is a programming model that 
+          organizes everything into objects, like in the real world we have
+          cars, computers and much more. Different objects can work together to
+          accomplish some task i.e. the wheels of a car work with the gas pedal
+          and other stuff to make the car move.
+      </p>
+      </div>
+      <div class="col-4 col-s-12">
+        <img src="../Images/object/object.png" alt="C Sharp example of object">
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_oop.asp">
+            C# OOP
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_classes.asp">
+            C# Classes and Objects
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_inheritance.asp">
+            C# Inheritance
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_polymorphism.asp">
+            C# Polymorphism
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_abstract.asp">
+            C# Abstraction
+          </a>
+        </li>
+        <li><a href="QuizSelection.html">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="getters-setters">
+      <h2>Getters & Setters</h2>
+      <p>
+        When programming it is often best to leave the fields as private. But
+        wait, what if you need to access them outside the class? Well thats where
+        Getter and Setter methods come in. These methods just allow you to either
+        get some value or set the value of some variable.
+      </p>
+      <div class="row">
+        <!--getter-->
+        <div class="col-6 col-s-12">
+          <h3>Example of Getter</h3>
+          <p>This method will return the value stored at the variable <i>name</i></p>
+          <img src="../Images/getterSetter/getter.jpg" 
+               alt="C Sharp example of a getter method">
+        </div>
+        <!--setter-->
+        <div class="col-6 col-s-12">
+          <h3>Example of Setter</h3>
+          <p>This method will set the value of the variable <i>name</i></p>
+          <img src="../Images/getterSetter/setter.jpg"
+               alt="C Sharp example of a setter method">
+        </div>
+      </div>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="coroutines" class="row">
+      <h1>Coroutines</h1>
+      <div class="row">
+        <div class="col-6">
+          <p>
+            Coroutines are a special type of method, there are a few major differences
+            though. One they are defined with IEnumberator were there would otherwise
+            be a return type, two, when a method is executed in Unity it does all its
+            operations in the frame it was called. For example if you wanted to change
+            the color of an object over some time interval you would not be able to use
+            a function becase everything happends in one frame. With a coroutine however
+            you can pause the execution return and then continue where you last left off
+            in the new frame.
+          </p>
+        </div>
+        <div class="col-6">
+          <img src="../Images/coroutines/coroutine_declaration.jpg"
+               alt="C Sharp example of how to declate a coroutine, public IEnumerator 
+               Spawn(){yield return new WaitForSeconds(2)}">
+        </div>
+        <h4>Helpful Links</h4>
+        <ul>
+          <li>
+            <a href="https://docs.unity3d.com/Manual/Coroutines.html">
+              Unity Manual Coroutines
+            </a>
+          </li>
+          <li>
+            <a href="../HTML/QuizSelection.html#csharp">Quiz</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="inheritance-polymorphism" class="row">
+      <h1>Inheritance</h1>
+      <p>
+        You are all propably awake of how people take on traits from their parents
+        i.e. their hair color, eye color, height, faceial features...Well that
+        is called inheritance and it can be achived in many programming languages
+        although it is not exactly the same as how it with people. Say for example
+        we want to make a game about pets on a farm, we could have a dog, cat, cow,
+        chicken and so on. All these animals need to eat, sleep, walk, make a sound,
+        have some number of legs, either have a tail or don't. They will also all 
+        share some attributes, now one thing we can do is write all this out for
+        all the different animals or we could create on class called Animal and 
+        write methods for walking....and define attributs like number of legs. 
+        Then create classes for different animals like Dog, Cat and so on, these
+        classes can then inherite from the Animal class and have all the method
+        and attribues there already.
+      </p>
+      <h1>Polymorphism</h1>
+      <p>
+        This goes hand in hand with Inheritance, as we created the Animal class
+        that has a method makeSound() then made all the animals (Dog, Cat,...)
+        inherite this method makeSound(). But as we all know a dog and a cat
+        do not make the same sound, so in the Dog class we can override the 
+        makeSounds() method to be a dog sound and do the same with the Cat class
+        to make it say a cat sound.
+      </p>
+      <h4>Helpful Links</h4>
+      <ul>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_inheritance.asp">
+            w3schools c# Inheritance
+          </a>
+        </li>
+        <li>
+          <a href="https://www.w3schools.com/cs/cs_polymorphism.asp">
+            w3schools c# Polymorphism
+          </a>
+        </li>
+        <li>
+          <a href="../HTML/QuizSelection.html#csharp">Quiz</a>
+        </li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="best-practice" class="row">
+      <h2>Best Practice</h2>
+      <p>Here I will go over some of the best practices for C# programming.</p>
+      <ul>
+        <li>Constant variables should be all caps</li>
+        <li>Use meaningful names (classes, methods, variables)</li>
+        <li>use Camel case for variables i.e. spawnInterval</li>
+        <li>use Pascal for methods and classes i.e. ClassName</li>
+      </ul>
+      <p>
+        Thats all you are going to need to know for now.
+      </p>
+    </div>
+  </div>
+ <!--footer-->
+ <footer class="row" id="footer">
+  <div class="row footer-top">
+    <div class="col-4 col-m-8 col-s-12">
+      <div class="row">
+        <p>
+          Using this site you gain the knowledge you need to make 2D games in
+          Unity. We provide you with tutorials that were made by us but also
+          provide links to other sources that you will find extremly helpful.
+          In the <a href="VideoTutorials.html">video turotials</a> is where
+          you can find the links to various playlist that will help you on
+          your journy.
+        </p>
+      </div>
+      <div class="row">
+        <ul class="inline">
+          <li><a href=""><i class="fa fa-twitter-square fa-2x"></i></a></li>
+          <li><a href=""><i class="fa fa-facebook-square fa-2x"></i></a></li>
+          <li><a href=""><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+          <li><a href=""><i class="fa fa-instagram fa-2x"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-4 col-m-12 col-s-12">
+      <p>
+        After getting introduced to everything we are going to combine all the 
+        new skill you've accquired into makeing two project games. One will be 
+        a 2D side scroller, and the other will the a top-down shooter. I if you
+        are completly new to everything about this I suggest you start with C# 
+        here and move on accordingly. 
+      </p>
+    </div>
+    <div class="col-4 col-m-12 col-s-12">
+      <h2>Navigation</h2>
+      <div class="col-6">
+        <ul>
+          <li><a href="CSharp.html">C#</a></li>
+          <li><a href="UnityEngine.html">Unity Engine</a></li>
+          <li><a href="Animating.html">Animating</a></li>
+          <li><a href="TopDown.html">Top-Down shooter</a></li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <ul>
+          <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+          <li><a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a></li>
+          <li><a href="QuizSelection.html">Quizs</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>This is the address</p>
+    </div>
+  </div>
+  <div class="row footer-bottom col-12 col-s-12">
+    <p><i class="fa fa-copyright"></i><span id="date"></span> Kelsey</p>
+  </div>
+</footer>
+  <script src="../Scripts/script.js"></script>
+</body>
+</html>

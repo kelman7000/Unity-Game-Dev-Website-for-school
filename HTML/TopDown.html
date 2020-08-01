@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../CSS/style.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/topNav.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/leftNav.css">
+  <!--icons-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>COMP 266/Top Down Shooter</title>
+  <script src="../Scripts/JQuery.js"></script>
+  <script src="../Scripts/myJQuery.js"></script>
+</head>
+<body>
+  <!--top navbar-->
+  <nav class="row" id="top-navbar">
+    <ul>
+      <li class="right">
+        <a href="javascript:void(0);" class="icon" onclick="topNavCollapse()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </li>
+      <li><a href="index.html">Main</a></li>
+      <li><a href="CSharp.html">C#</a></li>
+      <li><a href="UnityEngine.html">Unity Engine</a></li>
+      <li><a href="Animating.html">Animating</a></li>
+      <!--this will be a drop down listing the names of each projects-->
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn active">Projects</a>
+        <div class="dropdown-content">
+          <a href="TopDown.html">Top-Down shooter</a>
+        </div>
+      </li> 
+      <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+      <li>
+        <!--off site link-->
+        <a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a>
+      </li> 
+      <li><a href="QuizSelection.html">Quizs</a></li>
+      <li class="right"><a href="Contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <!--left side navbar-->
+  <nav id="left-navbar">
+    <ul>
+      <li><i class="fa fa-window-close fa-5x" id="close"></i></li>
+      <li><a href="#setup">Project Setup</a></li>
+      <li><a href="#movement">Player Movement</a></li>
+      <li><a href="#shooting">Player Shooting</a></li>
+      <li><a href="#health">Health</a></li>
+      <li><a href="#damage">Damage</a></li>
+      <li><a href="#UI">UI</a></li>
+      <li><a href="#EnemyMovement">Enemy Movement</a></li>
+      <li><a href="#tileMap">Tile Maps</a></li>
+      <li><a href="#interactables">Interactables</a></li>
+      <li><a href="#obsticals">Obsticals</a></li>
+      <li><a href="#animations">Animations</a></li>
+      <li><a href="#drops">Drops</a></li>
+      <li><a href="#spawning">Spawning</a></li>
+      <li><a href="#sounds">Sounds</a></li>
+      <li><a href="#menus">Menus</a></li>
+    </ul>
+  </nav>
+  <div id="show-side-nav"></div>
+  <!--show the image with its alt in a window at the center of the screen-->
+  <div id="image-over">
+    <button id="close-btn">Close</button>
+    <div class="row">
+      <div class="col-12">
+        <img src="#" alt="" id="click-img">
+      </div>
+    </div>
+  </div>
+  <div id="panel">
+    <!--page intro-->
+    <h1>Making a Top-Down Shooter</h1>
+    <div class="row">
+      <p>
+        In this project we are going to walk through making a Top-Down Shooter game.
+        To the left you can see where there are going to be major changes added to 
+        the game. After each of those sections you will be able to complete a quiz.
+        Additionaly, there will be challenges in each secition for you to complete
+        without our guidence. There will also be a link for the game on GitHub 
+        completed up to the end of each section avalible for download, feel free
+        to play around with the code and see what does what. 
+      </p>
+      <p>
+        I would also like to note that this will not be an accurate representation 
+        of the development life cycle. Unless you have planned everything out to the
+        letter and nothing goes wrong...something will always go wrong.
+      </p>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="setup" class="row">
+      <h2>Project Setup</h2>
+      <ol>
+        <li>
+          Open Unity Hub and create a <a href="UnityEngine.html">new project</a> 
+          called TopDownShooter
+        </li>
+        <li>Download the game assets <a href="https://github.com/kelman7000/COMP266-GAME-ASSETS">here</a></li>
+        <li><a href="UnityEngine.html#importing_assets">Importing Assets</a></li>
+      </ol>
+      <!--setup instructions w/ collision matrix-->
+      <div class="row">
+        <div class="col-8 cols-s-12">
+          <div class="row">
+            <p>
+              Now that you have all the sprites select them all and change their pixels
+              per unit to 32 also change the filter Mode to Point(NoFilter) and 
+              Compression to None then click Apply. This means that each unit will
+              be 32 pixels high and 32  pixels wide. Next we will add all the 
+              <a href="https://docs.unity3d.com/Manual/Layers.html">layers</a>, 
+              <a href="https://docs.unity3d.com/Manual/2DSorting.html">sorting 
+              layers</a> and <a href="https://docs.unity3d.com/Manual/Tags.html">
+              tags</a> that we need. Go to Edit -> Project Settings -> Tags and 
+              Layers. We will also setup the collision matrix, Edit -> Project 
+              Settings -> Physics2D and scroll to the bottom set it up like the 
+              following.
+            </p>
+          </div>
+          <div class="row">
+            <h3>Folders to make</h3>
+            <ul>
+              <li>Art</li>
+              <li>Sounds</li>
+              <li>Prefabs</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-4 col-m-12 col-s-12">
+          <img src="../Images/unityProjects/TopDown/collision_matrix.jpg" 
+               alt="Collision matrix">
+        </div>
+      </div>
+      <!--layers, sorting layers and tags-->
+      <div class="row">
+        <!--layers-->
+        <div class="col-4 col-m-4 col-s-4">
+          <h3>Layers Needed</h3>
+          <ul>
+            <li>Player</li>
+            <li>Bullet</li>
+            <li>Enemy</li>
+            <li>Obsticle</li>
+          </ul>
+        </div>
+        <!--sorting layers-->
+        <div class="col-4 col-m-4 col-s-4">
+          <h3>Sorting Layers Needed</h3>
+          <ul>
+            <li>Ground</li>
+            <li>GroundOverLay</li>
+            <li>Pickups</li>
+            <li>Enemies</li>
+            <li>Player</li>
+            <li>Obstical</li>
+            <li>UI</li>
+          </ul>
+        </div>
+        <!--Tags-->
+        <div class="col-4 col-m-4 col-s-4">
+          <h3>Tags</h3>
+          <ul>
+            <li>Enemy</li>
+            <li>Bullet</li>
+          </ul>
+        </div>
+      </div>
+      <p>
+        Here we'll create all the Scripts that we will be needing aswell. You
+        should create a new folder in the assets folder called Scripts.
+        <a href="UnityEngine.html#folder-creation">Creating a new Folder</a>
+      </p>
+      <!--scripts needed-->
+      <div class="row">
+        <div class="col-3 col-m-6 col-s-6">
+          <ul>
+            <li>AmmoPickup</li>
+            <li>Break</li>
+            <li>CameraFollow</li>
+            <li>CoinPickup</li>
+          </ul>
+        </div>
+        <div class="col-3 col-m-6 col-s-6">
+          <ul>
+            <li>Damage</li>
+            <li>Drop</li>
+            <li>EnemyMovement</li>
+            <li>Gun</li>
+          </ul>
+        </div>
+        <div class="col-3 col-m-6 col-s-6">
+          <ul>
+            <li>Health</li>
+            <li>HeartPickup</li>
+            <li>Interactable</li>
+            <li>LevelManager</li>
+          </ul>
+        </div>
+        <div class="col-3 col-m-6 col-s-6">
+          <ul>
+            <li>Player</li>
+            <li>PlayerController</li>
+            <li>SpawnEnemies</li>
+            <li>UIController</li>
+          </ul>
+        </div>
+      </div>
+      <p>Okay, thats all we will be doing for project setup</p>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="movement" class="row">
+      <h2>Player Movement</h2>
+      <p>
+        here we are going to setup the movement for the player. This means 
+        we will be getting input from our user and telling the Player object
+        what to do. We are going to need to add a number of new component to
+        the gameObject. Below is a list of what components are needed.
+      </p>
+      <!--player object components and inspector-->
+      <div class="row">
+        <h3>Player Object</h3>
+        <p>
+          The first step in this proccess is to make an empty gameObject, 
+          rename it to Player and switch the tag, sorting layer, and layer to
+          Player. 
+        </p>
+        <!--list of components-->
+        <div class="col-8">
+          <!--Components needed-->
+          <ul>
+            <!--circle collider-->
+            <li>
+              <p>
+                <b>Circle Collider:</b> This will allow our player to collide with
+                other objects in the game such as enemies.
+              </p>
+            </li>
+            <!--Ridigbody2D-->
+            <li>
+              <p>
+                <b>Rigidbody2D:</b> This will apply physics to the Player gameObject
+                and will be use for the movement. You will need to set its gravity
+                scale to 0, this way the character does not fall off the screen.
+              </p>
+            </li>
+            <!--PlayerController-->
+            <li>
+              <p>
+                <b>PlayerController:</b> This is what will be used to get input from
+                the user in-order to move the rigidbody. This is the script that we 
+                will be writting in. 
+              </p>
+            </li>
+            <!--SpriteRenderer-->
+            <li>
+              <p>
+                <b>SpriteRenderer</b>: This will to display the image of the Player on
+                the scene. Set this to be the Player sprite.
+              </p>
+            </li>
+            <!--Player-->
+            <li>
+              <b>Player</b>: This is used for the player stats 
+            </li>
+            <!--Health-->
+            <li>
+              <p><b>Health</b>: This is used to give the player their health</p>
+            </li>
+            <!--AudioSoure-->
+            <li>
+              <p><b>AudioSource</b>: This is used to play sounds</p>
+            </li>
+          </ul>
+        </div>
+        <!--image of the player inspector-->
+        <div class="col-4">
+          <img src="../Images/unityProjects/TopDown/movement/player_objects_inspector.jpg"
+              alt="image of the player game object with all its components">
+        </div>
+      </div>
+      <p>
+        What the <i>PlayerController</i> script will responsible for is moving 
+        the player in the appropriate direction when the user uses the W, A, S, 
+        D keys, it will also make sure that the player is always facing the mouse
+        cursor. Everything that we do here will be in the <i>PlayerController</i>
+         script.
+      </p>
+      <h3>List of fields</h3>
+      <ul>
+        <li>[SerializedField] float speed</li>
+        <li>[SerializedField] Camera cam</li>
+        <li>private Vector2 movement</li>
+        <li>private Vector2 mousePos</li>
+        <li>private Rigidbody2D rb</li>
+      </ul>
+      <!--section challenge 1-->
+      <div class="row">
+        <h3>Section Challenge #1</h3>
+        <p>
+          In the Start() method assign the Rigidbody2D component we added using 
+          GetComponent();. After you have attempted this click 
+          on 'Solution' below to check if you are right. 
+        </p>
+        <div>
+          <button class="solution-button">Solution</button>
+          <!--will be hidden until Solutions is click-->
+          <div class="challenge_answer row">
+            <!--img-->
+            <div class="col-5 col-s-12">
+              <img src="../Images/unityProjects/TopDown/movement/Start().jpg"
+                alt="Start() method">
+            </div>
+            <!--desc-->
+            <div class="col-7 col-s-12">
+              <p>
+                .GetComponent(component type); is a method that will find the 
+                component of the specified type on the GameObject that the script
+                is attatched to. If this component is not there then it will be set
+                to null.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--update-->
+      <div class="row">
+        <h3>Update()</h3>
+        <P>
+          In Update() we are going to get the input from the user using 
+          <a href="">Input.GetAxis("string")</a> and the movement vector we 
+          created earlier. This is done by assigning the appropriate axis to
+          appropriate vector component. We will also need to get the current
+          position of the mouse in world units and not pixels. This is done with
+          cam.ScreenToWorldPoint(Input.MousePosition) and is assigned to mousePos
+        </P>
+        <img src="../Images/unityProjects/TopDown/movement/Update().jpg" 
+            alt="that the update method should look like, getting the Horizontal and
+            Vertical input axis's. It also gets the mouse position">
+      </div>
+      <!--MovePlayer-->
+      <div class="row">
+        <h3>MovePlayer()</h3>
+        <!--Player Move and Rotation-->
+        <div class="row">
+          <!--Player Move-->
+          <div class="col-6 col-s-12">
+            <h4>Player Move</h4>
+            <p>
+              This is the method that will be used to move the Player object and make
+              sure the rotation is correct. Because <i>rb</i> has been assigned in the 
+              Start() method and we are getting movement from Update() we can use a
+              helpful method that is part of the Rigidbody class, called MovePosition().
+              We want to pass in the rigidbody's current position and add the movement
+              vector to it and multiply that by speed to move faster and that by 
+              <a href="https://docs.unity3d.com/ScriptReference/Time-deltaTime.html">
+              Time.deltaTime</a> now we just need to call this mehtod in
+              FixedUpdate() and thats all the player will now move given input from the
+              player pressing the w, a, s, d keys.
+            </p>
+          </div>
+          <!--Player Rotation-->
+          <div class="col-6 col-s-12">
+            <h4>Player Rotation</h4>
+            <p>
+              Now to make the player face the mouse we create a Vector2 called lookDir
+              and set it equal to mousePos - rb.position (this is just a little vector
+              math you learn in algebra or physics). now we need the angle, which we can
+              get from a little trigenometry. This is because the vectos create right
+              triangles. But we have to keep in mind that Unity gives us angles in radians
+              that is why  we must use the Rad2Deg which is a constant that converts 
+              radians into degrees. Then just assign rb.rotation = angle and call 
+              MovePlayer() in FixedUpdate(). You will need to make sure you set the 
+              speed variable to something other than 0 in the inspector, I suggest 6.
+            </p>
+          </div>
+        </div>
+        <!--PlayerMove() image-->
+        <div class="row">
+          <div class="col-12 col-s-12">
+            <img src="../Images/unityProjects/TopDown/movement/Movement().jpg" 
+                 alt="What the MovePlayer method should look like. Uses the
+                 MovePosition method on the players rigidbody and set the rotation
+                 of the player as well">
+          </div>
+        </div>
+      </div>
+      <!--PlayerController Component-->
+      <div class="row">
+        <h3>PlayerController Component</h3>
+        <p>
+          As we have yet to set the speed and camera fields we will need to do
+          that. This is done in the editor though, type 6 in for the speed and
+          drag the main camera into the cam slot.
+        </p>
+        <img src="../Images/unityProjects/TopDown/movement/player_movement_editor.jpg"
+            alt="what the player controller component should look like">
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.youtube.com/watch?v=wXI9_olSrqo">
+            Vector Math
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.unity3d.com/ScriptReference/Rigidbody.MovePosition.html">
+            rb.MovePosition
+          </a>
+        </li>
+        <li>
+          <a href="https://docs.unity3d.com/ScriptReference/Camera.ScreenToWorldPoint.html">
+            cam.ScreenToWorldPoint
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/kelman7000/COMP266-GAME">
+            Project Download
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#top-down">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="shooting" class="row">
+      <h2>Shooting</h2>
+      <p>
+        In this section we are going to make it so the user can shoot at enemies
+        when they click the left mouse button. But before we can do that there are
+        some other things that we must setup inside the editor. We'll need a Bullet,
+        Muzzle Flash, and a visual for the gun. Thus you can assume we will be working
+        in the <i>Gun</i> script.
+      </p>
+      <!--section setup-->
+      <div class="row">
+        <h3>Section Setup</h3>
+        <p>
+          On the Player object in the hierarchy add and empty object and name it 
+          <i>GunHold</i>, under this object add two more children named <i>Flash</i>
+          and <i>ShootPoint</i>. You will also need to do a 
+          <a href="">transform reset</a> on the Player object. Below you will also
+          find all the components needed for the GunHold child, along with the Gun
+          component configuragion.
+      </p>
+      </div>
+      <!--components needed on GunHold-->
+      <div class="row">
+        <!--list of components-->
+        <div class="col-8">
+          <!--Components needed-->
+          <ul>
+            <!--SpriteRenderer-->
+            <li>
+              <p>
+                <b>SpriteRenderer</b>: This will to display the image of the Player on
+                the scene.  
+              </p>
+            </li>
+            <!--Gun-->
+            <li>
+              <p><b>Gun</b>: this is the script that will do the shooting.</p>
+            </li>
+            <!--AudioSoure-->
+            <li>
+              <p><b>AudioSource</b>: This is used to play sounds</p>
+            </li>
+          </ul>
+        </div>
+        <!--image of the player inspector-->
+        <div class="col-4" id="gun_config">
+          <img src="../Images/unityProjects/TopDown/gun/gun_inspector.jpg"
+              alt="Gun component setup">
+        </div>
+      </div>
+      <!--section challenge-->
+      <div class="row">
+        <h3>Section Challenge #1</h3>
+        <p>
+          I task you with reseting the transform of the player object, if you
+          are unsure how to do this use the link above.
+        </p>
+        <div>
+          <button class="solution-button">Solution</button>
+          <!--will be hidden until Solutions is click-->
+          <div class="challenge_answer row">
+            <!--img-->
+            <div class="col-4 col-s-12">
+              <img src="../Images/unityProjects/TopDown/gun/transform_reset.jpg"
+                alt="Start() method">
+            </div>
+            <!--desc-->
+            <div class="col-8 col-s-12">
+              <p>
+                All you need to do is go to the player objects transform click on the
+                three vertially aligned dots and the click reset.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--player object setup-->
+      <div class="row">
+        <div class="col-8">
+          <ul>
+            <li>
+              On the GunHold object add a Sprite Renderer (use the shotgun sprite)
+              and the Gun script. Then move it up on the y-axis to 0.79 and set its
+              scale to 2 on x and y.
+            </li>
+            <li>
+              On the Flash add a Sprite Renderer (use the Flash sprie) and scale it 
+              down to 0.5 on the x and y, then move its y position to 0.26 (if the 
+              Player object transform is (0, 0, 0))
+            </li>
+            <li>Move the ShootPoint to the end of the Gun sprite</li>
+          </ul>
+          <p>
+            You will also need to make sure all the Player's children are on the rightt
+            layer and sorting layer.
+          </p>
+        </div>
+        <div class="col-2 col-m-6 col-s-6">
+          <img src="../Images/unityProjects/TopDown/gun/player_object_children_hierarchy.jpg"
+                alt="The player object and its children in the hierarchy">
+        </div>
+        <div class="col-2 col-m-6 col-s-6">
+          <img src="../Images/unityProjects/TopDown/gun/player_object_scene.jpg"
+               alt="the player object in the scene">
+        </div>
+      </div>
+      <h3>List of Fields</h3>
+      <ul>
+        <li>[SerializeField] GameObject flash</li>
+        <li>[SerializeField] GameObject bulletPrefab</li>
+        <li>[SerializeField] Transform shootPoint</li>
+        <li>[SerializeField] float bulletForce</li>
+        <li>private AudioSource audioSource (this won't be used until later)</li>
+      </ul>
+      <!--events-->
+      <div class="row">
+        <h3>Events & Delegates</h3>
+        <p><a href="../HTML/UnityEngine.html#events">Here</a> is a link to events and delegates</p>
+        <img src="../Images/unityProjects/TopDown/gun/events.jpg" 
+             alt="public delegate void OnShootDelegate(); and public static
+                  OnShootDelegate OnShootEvent;">
+      </div>
+      <!--Start-->
+      <div class="row">
+        <h3>Start()</h3>
+        <p>
+          Here all we need to do is make the flash not show at the start. this
+          is achived through the use of the method SetActive() which takes one
+          parameter of type bool.
+        </p>
+        <img src="../Images/unityProjects/TopDown/gun/Start().jpg" 
+             alt="Start method, sets the flash active to be false and gets the 
+                AudioSource component">
+      </div>
+      <!--update-->
+      <div class="row">
+        <h3>Update()</h3>
+        <p>
+          Here we want to chech if the user is pressing the left mouse button. This
+          is accomplished with an if statment and Input.GetButtonDown("Fire1") is 
+          the condition. If it returns true call StartCoroutine(Shoot()). You can do
+          some reading about the method used by hovering the mouse over it. But
+          essentialy it just returns <i>true</i> the frame the left mouse button is 
+          clicked. We also want to make sure that the Player has ammunition to shoot,
+          this is implemented later with the help of the Player script.
+        </p>
+        <img src="../Images/unityProjects/TopDown/gun/Update().jpg"
+            alt="Update method, checks to see if the player is pressing the fire button
+              and if they have ammo. If they do shoot">
+      </div>
+      <!--Shoot()-->
+     <div class="row">
+      <h3>Shoot()</h3>
+      <p>
+        This is not going to be your normal everyday method. It is actualy known as
+        a <a href="">coroutine</a>. IEmunerator Shoot() {...} is how we declare one.
+        Inside this method we want to do the following.
+      </p>
+       <!--list of what will happen in Shoot()-->
+      <div class="col-5 col-s-12">
+        <ol>
+          <li>
+            create a GameObject bullet and instantiate the bulletPrefab and a 
+            position and rotation matching the shootPoint. 
+          </li>
+          <li>create a Rigidbody rb and set it to the bullets Rigidbody2D</li>
+          <li>add a force to the bullets Rigidbody2D to make it shoot forward</li>
+          <li>set the flash to be active</li>
+          <li>wait 0.1 seconds</li>
+          <li>set the flahs to be in-active</li>
+        </ol>
+       </div>
+       <!--Shoot() image-->
+       <div class="col-7 col-s-12">
+          <img src="../Images/unityProjects/TopDown/gun/Shoot().jpg" 
+               alt="the Shoot coroutine">
+       </div>
+     </div>
+     <p>
+       For you the top line will cause an error to fix this open the Player script and
+       add a public static int ammo = 16; this will also fix the issue in the Update()
+       conditional.
+     </p>
+     <!--bullet prefab-->
+      <div class="row">
+        <h3>The Bullet Prefab</h3>
+        <p>Now we are going to create the Bullet Prefab</p>
+        <ol>
+          <li>create a folder Prefabs</li>
+          <li>make the bullet prefab</li>
+        </ol>
+        <p>
+          create an new empty gameObject in the hierarchy name it Bullet and add
+          a Sprite Renderer, CapsuleCollider2D, and Rigidbody2D. Set the Rigidbody's 
+          gravity scale to 0 and the Sprite Renderer's sprite to the Bullet sprite. 
+          You will also want to set the scale to 1.5 on the x and y. Now just drag
+          and drop the Bullet object into the Prefabs folder. You also need to set the
+          sorting layer to Player, layer to Bullet and tag to Bullet.
+        </p>
+        <img src="../Images/unityProjects/TopDown/gun/bullet_prefab.jpg"
+            alt="Bullet prefab">
+      </div>
+      <!--gun setup-->
+      <div class="row">
+        <h3>Gun Setup</h3>
+        <ol>
+          <li>drag and drop the Flash object into its slot</li>
+          <li>drag and drop the Bullet prefab into its slot</li>
+          <li>drag and drop the ShootPoint transform into its slot</li>
+          <li>set the bulletForce to 20</li>
+          <li>
+            refer to <a href="#gun_config">here</a> the image in section setup
+            (the one with the Player)
+          </li>
+        </ol>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li><a href="">Instantiate</a></li>
+        <li><a href="">rb.AddForce()</a></li>
+        <li>
+          <a href="https://github.com/kelman7000/COMP266-GAME">
+            Project Download
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#top-down">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="health" class="row">
+      <h2>Health</h2>
+      <p>
+        We are now ging to be writting the Health script which will be working 
+        with the damage script to determine when an somehting should take damage
+        and will also destroy said gameObject when their health has reavhed zero. 
+      </p>
+      <h3>List of Fields</h3>
+      <ul>
+        <li>[SerializeField] Slider healthBar</li>
+        <li>[SerializeField] float maxHealth</li>
+        <li>[SerializeField] GameObject deathEffect</li>
+        <li>[SerializeField] bool destroyOnDeath = true</li>
+        <li>[SerializeField] bool destroyDeathEffect</li>
+        <li>[SerializeField] float timeToDestroyDeathEffect</li>
+        <li>[SerializeField] AudioClip deathClip</li>
+        <li>private float currHealth</li>
+        <li>private AudioSource audioSource</li>
+      </ul>
+      <p>
+        There will also be some <a href="">events and delegates</a> that are
+        used here. 
+      </p>
+      <img src="../Images/unityProjects/TopDown/health/events.jpg" 
+           alt="Health events and delegates">
+      <!--start-->
+      <div class="row">
+        <h3>Start()</h3>
+        <p>
+          Here we want to set the currHealth to maxHealth and healthBar.value to
+          healthbar.maxValue and lastly get the AudioSource. 
+        </p>
+        <img src="../Images/unityProjects/TopDown/health/Start().jpg" 
+            alt="Start method">
+      </div>
+      <!--takeDamage-->
+      <div class="row">
+        <h3>TakeDamage()</h3>
+        <p>
+          This is a public void method that will apply damage to the object. It has
+          one parameter <i>amount</i> of type float. You will subtract amount form 
+          health, invoke the OnTakeDamageEvent if it is not null, update the health
+          bar UI and check if the health is below zero.
+        </p>
+        <img src="../Images/unityProjects/TopDown/health/TakeDamage().jpg"
+            alt="TakeDamage method">
+      </div>
+      <!--heal-->
+      <div class="row">
+        <h3>Heal()</h3>
+        <p>
+          This is a public void method that will heal the object. It has one
+          parameter <i>amount</i> of type float. It will add amount to currHealth
+          but if the currHealth is greater than the maxHealth reset it to be
+          equal to the maxHealth then update the health UI.
+        </p>
+        <img src="../Images/unityProjects/TopDown/health/Heal().jpg"
+            alt="Heal method">
+      </div>
+      <!--updateHealthUI-->
+      <div class="row">
+        <h3>UpdateHealthUI()</h3>
+        <p>
+          This is a private void method that updates the health bar to only color
+          the correct percent in, showing how much health is left.
+        </p>
+        <img src="../Images/unityProjects/TopDown/health/UpdateHealthUI().jpg" 
+            alt="UpdateHealthUI method">
+      </div>
+      <!--die-->
+      <div class="row">
+        <h3>Die()</h3>
+        <p>
+          This method is called when the health drops to zero. We want our death
+          sound to play and some death effect to happen. It must also determine 
+          weather or not the deathEffect and the gameObject itself must be destroy.
+          You will notice that there is a 0.1f in the calls to Destroy(), this is
+          to ensure the death sound has time to play and the death effect can be
+          instantiated. 
+        </p>
+        <img src="../Images/unityProjects/TopDown/health/Die().jpg" alt="Die method">
+      </div>
+      <!--challenge-->
+      <div class="row">
+        <h3>Section Challenge #2</h3>
+        <p>
+          For this challenge you will be adding the health component to the Player
+          and Enemy Objects, and setting them up. You will need to make the Enemy 
+          object and setup all the layers, sorting layers and tags just add the
+          Sprite Renderer, Health and Collider2D for now also scale it to 2 on
+          the x and y.
+        </p>
+       <div>
+        <button class="solution-button">Solution</button>
+        <!--will be hidden until Solutions is click-->
+        <div class="challenge_answer row">
+          <p>For now you can ignore the Health Bar, Death Effect and Death Clip</p>
+          <!--enemy health img-->
+          <div class="col-6 col-s-12">
+            <h4>Player Health Component</h4>
+            <img src="../Images/unityProjects/TopDown/health/player_health.jpg"
+                alt="Image of the Player objects Health component.">
+          </div>
+          <!--player health img-->
+          <div class="col-6 col-s-12">
+            <h4>Enemy Health Component</h4>
+            <img src="../Images/unityProjects/TopDown/health/enemy_health.jpg"
+                alt="Image of the Emeny object Health comonent.">
+          </div>
+        </div>
+       </div>
+      </div>
+      <!--getters-->
+      <div class="row">
+        <h3>Getters</h3>
+        <p>
+          These are methods that are used to acccess private fields in other scripts
+        </p>
+        <h4>GetCurrHealth()</h4>
+        <p>public method returns currHealth</p>
+        <h4>GetMaxHealth()</h4>
+        <p>public method returns maxHealth</p>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://github.com/kelman7000/COMP266-GAME">
+            Project Download
+          </a>
+        </li>
+        <li><a href="CSharp.html#getters-setters">Getters and Setters</a></li>
+        <li><a href="QuizSelection.html#top-down">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="damage" class="row">
+      <h2>Damage</h2>
+      <p>
+        It is time to add the core of the game, that is a health and damage
+        system. We'll start with the <i>Damage</i> script, so open that up! This 
+        script will apply some damage to a Health script of an object on some layer.
+      </p>
+      <h3>List of Fields</h3>
+      <ul>
+        <li>[SerializeField] float damage</li>
+        <li>[SerializeField] LayerMask damageLayer</li>
+        <li>[SerializeField] bool destroyOnCollision</li>
+        <li>private Collider2D collider</li>
+      </ul>
+      <!--start-->
+      <div class="row">
+        <h3>Start()</h3>
+        <p>All we need to do in this method is get the collider component</p>
+        <img src="../Images/unityProjects/TopDown/damage/Start().jpg"
+            alt="image of the Start() method">
+      </div>
+      <!--onCollisionEntre2D-->
+      <div class="row">
+        <h3>OnCollisionEntre2D()</h3>
+        <p>
+          Here the only thing that will happen is a call to TakeHealth() passing in 
+          collision as the parameter.
+        </p>
+        <img src="../Images/unityProjects/TopDown/damage/OnCollisionEnter2D.jpg" 
+            alt="image of the OnCollisionEntre2D() method">
+      </div>
+      <!--TakeHealth-->
+      <div class="row">
+        <h3>TakeHealth()</h3>
+        <p>
+          In this method we want to get the Health component of the collision 
+          parameter if it is not null and the object collided with is in the
+          damageLayer we want to call TakeDamage() passing in damage. We also
+          want to check if the gameObject should be destroyed or not.
+        </p>
+        <img src="../Images/unityProjects/TopDown/damage/TakeHealth().jpg"
+             alt="image of the TakeHealth() mehtod">
+      </div>
+      <!--Bullet setup-->
+      <div class="row">
+        <h3>Bullet Setup</h3>
+        <!--img of Bullet Damage inspecor-->
+        <div class="col-4 col-s-12">
+          <img src="../Images/unityProjects/TopDown/damage/bullet_inspector.jpg" 
+             alt="What the Damage component on the bullet prefab should look like">
+        </div>
+        <div class="col-8 col-s-12">
+          <p>
+            Now that we have the damage script we'll add it to the bullet Prefab,
+            the bullet will need to damage the layers <i>Enemy</i> and <i>Obstical</i>.
+            You will also need to do this for the enemy object when it is created,
+            but it will only apply damage to the <i>Player</i> layer.
+          </p>
+        </div>
+      </div>
+      <!--challenge-->
+      <div class="row">
+        <h3>Section Challenge #1</h3>
+        <p>
+          Set up the Enemy objects Damage component. 
+        </p>
+       <div>
+        <button class="solution-button">Solution</button>
+        <!--will be hidden until Solutions is click-->
+        <div class="challenge_answer row">
+          <!--img-->
+          <div class="col-4 col-s-12">
+            <img src="../Images/unityProjects/TopDown/damage/enemy_with_damage_component.jpg"
+              alt="Start() method">
+          </div>
+          <!--desc-->
+          <div class="col-8 col-s-12">
+            <p>
+              You will need to make sure that the Enemy is also set to the correct 
+              layer, sorting layer and tag.
+            </p>
+          </div>
+        </div>
+       </div>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li><a href="">IsTouchingLayers</a></li>
+        <li>
+          <a href="https://github.com/kelman7000/COMP266-GAME">
+            Project Download
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#top-down">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="UI" class="row">
+      <h2>UI</h2>
+      <p>
+        In this part of the project we are going to setup the UI for the game. 
+        This includes the displaying the number of Bullets and coins the player
+        has in the upper left hand corrner of the screen and some UI to display
+        the an objects health above its head.
+      </p>
+      <div class="row">
+        <!--game UI-->
+        <div class="col-6 col-s-12">
+          <h3>Game UI</h3>
+          <ol>
+            <li>Create a new canvas in the hierarchy</li>
+            <li>
+              <div class="row">
+                <p>inside the canvas add two text and two images (or TMPro text)</p>
+              </div>  
+              <img src="../Images/unityProjects/TopDown/ui_controller/canvas_with_text.jpg"
+                  alt="">
+            </li>
+            <li>set the width of the text to 55 and the height to 19 on both elements</li>
+            <li>
+              rename the text to <i>Ammo txt</i> and <i>Coin txt</i> and the images to
+              <i>Coin img</i> and <i>Ammo img</i>
+            </li>
+            <li>set the Ammo img width to 30 and its height to 25</li>
+            <li>set the Coin img width and height to 25</li>
+            <li>
+              <div class="row">
+                <p>select all the elements in the canvas set the <a href="">anchors</a>
+                  to top left.</p>
+              </div>
+              <img src="../Images/unityProjects/TopDown/ui_controller/text_anchor_point.jpg"
+                  alt="">
+            </li>
+            <li>set the Ammo img image component Source Image to Ammo Box</li>
+            <li>set the Coin img image component Source Image to Coin</li>
+            <li>
+              <div class="row">
+                <p>set everthing up in the top left corrner like so</p>
+              </div>
+              <img src="../Images/unityProjects/TopDown/ui_controller/text_location_canvas.jpg"
+                  alt="canvas image">
+            </li>
+          </ol>
+        </div>
+        <!--health UI-->
+        <div class="col-6 col-s-12">
+          <h3>Health UI</h3>
+          <p>
+            This is going to be the UI that is overtop the any object that has a
+            Health component. And it will be created useing a slider.
+          </p>
+          <ol>
+            <li>create a new canvas and rename it to Health Canvas</li>
+            <li>
+              <div class="row">
+                <p>set the Render Mode to <a href="">World Space</a></p>
+              </div>
+              <img src="../Images/unityProjects/TopDown/health/health_canvas_render_mode.jpg"
+                   alt="">
+            </li>
+            <li>set the scale of the canvas to 0.005 on the x and y</li>
+            <li>drag the canvas into the game view</li>
+            <li>set the canvas sorting layer to UI</li>
+            <li>set the width to 250 and height to 80</li>
+            <li>add a slider to the canvas with a width of 200 and height of 80</li>
+            <li>
+              <div class="row">
+                <p> remove the Handle Slide Area</p>
+              </div>
+              <img src="../Images/unityProjects/TopDown/health/health_canvas.jpg"
+                   alt="">
+            </li>
+            <li>set the Background image Color to rbga(0, 0, 0, 52)</li>
+            <li>set Fill Area -> Fill to rgba(255, 0, 0, 255)</li>
+            <li>
+             <div class="row">
+               <p> set Fill Area -> Fill -> Pivot to 0 on the x and 0.5 on y</p>
+             </div>
+              <img src="../Images/unityProjects/TopDown/health/health_canvas_fill_pivot.jpg"
+                   alt="">
+            </li>
+            <li>make a <a href="">prefab</a></li>
+          </ol>
+        </div>
+      </div>
+      <p>
+        As we created the Slider in the Health script you can imagin that we will
+        be using this Health Canvas for just that. So, all you need to do is add a 
+        child to the Player and enemy which will be the Health Canvas prefab then 
+        drag and drop the slider into the Health script Health Bar section.
+      </p>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.youtube.com/watch?v=_RIsfVOqTaE">
+            Blackthornprod - How to make UI in Unity - EASY TUTORIAL
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/kelman7000/COMP266-GAME">
+            Project Download
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#top-down">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="EnemyMovement" class="row">
+      <h2>Enemy Movement</h2>
+      <p>
+        It is time to make the enemy move towards the Player so that damage
+        can be delt to them. This may sound like a daunting task but Unity
+        actually makes this quite easy for us to do with the method MoveTowards(),
+        that is part of the Vector class. To start open the EnemtMovement script.
+      </p>
+      <h3>List of Fields</h3>
+      <ul>
+        <li>[SerializeField] float speed</li>
+        <li>float angle</li>
+        <li>Vector3 lookDir</li>
+        <li>Transform player</li>
+        <li>Rigidbody2D rb</li>
+      </ul>
+      <!--start & update-->
+      <div class="row">
+        <h3>Start() & Update()</h3>
+        <p>
+          In the Start() method assign rb to the rigidbody component and the player
+          to the Player objects transform with FinGameObjectWithTag("Player"). In
+          Update() call two new methods Movement() and Rotation(), you'll have to
+          create these two methods
+        </p>
+        <img src="../Images/unityProjects/TopDown/enemy_movement/Start().jpg" 
+             alt="Start() method">
+        <img src="../Images/unityProjects/TopDown/enemy_movement/Update().jpg"
+             alt="Update() method">
+      </div>
+      <!--rotation-->
+      <div class="row">
+        <h3>Rotation()</h3>
+        <p>
+          This method will make sure that the Enemy is always facing the player.
+          We can do this the same way that we make the player face the mouse cursor.
+        </p>
+        <img src="../Images/unityProjects/TopDown/enemy_movement/Rotation().jpg"
+            alt="Rotation() method">
+      </div>
+      <!--movement-->
+      <div class="row">
+        <h3>Movement()</h3>
+        <p>
+          This method makes the Enemy move towards the Player. Which is done with 
+          the following.
+        </p>
+        <img src="../Images/unityProjects/TopDown/enemy_movement/Movement().jpg"
+            alt="Movemnt() method">
+        <p>
+          And thats actually all that we need to do to make the enemies move to
+          the Player.
+        </p>
+      </div>
+      <!--challenge-->
+      <div class="row">
+        <h3>Section Challenge #1</h3>
+        <p>
+          Your challenge for this section is to create the enemy object in the 
+          scene. Below is a list of the needed components, your job is to set them 
+          properly.
+        </p>
+        <ul>
+          <li>Sprite Renderer</li>
+          <li>Health</li>
+          <li>Damage</li>
+          <li>Enemy Movement</li>
+          <li>Drop</li>
+          <li>Box Collider</li>
+          <li>Rigidbody2D</li>
+          <li>Audio Source</li>
+        </ul>
+        <div>
+          <button class="solution-button">Solution</button>
+          <!--will be hidden until Solutions is click-->
+          <div class="challenge_answer row">
+            <!--img-->
+            <div class="col-4 col-s-12">
+              <img src="../Images/unityProjects/TopDown/enemy_movement/enemy_object_inspector.jpg"
+                alt="Start() method">
+            </div>
+            <!--desc-->
+            <div class="col-8 col-s-12">
+              <p>
+                The Sprite Renderer should use the Enemy sprite, the object should have
+                a Heath Canvas as a child, maxHealth = 10 both bools true, and destroy
+                time set to 1. damage Layer = Player, destroy on Collision = false.
+                The rigidbody should be kinimatic and have a gravity 
+                scale of 0. And you can play around with the movement speed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://github.com/kelman7000/COMP266-GAME">
+            Project Download
+          </a>
+        </li>
+        <li><a href="https://docs.unity3d.com/ScriptReference/Vector3.MoveTowards.html">MoveTowards()</a></li>
+        <li><a href="https://docs.unity3d.com/Manual/class-Rigidbody2D.html">kinimatic rigidbody</a></li>
+        <li><a href="QuizSelection.html#top-down">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="tileMap" class="row">
+      <div class="row">
+        <h2>Tile Maps</h2>
+        <p>
+          This is a tile-based game which means that the area the user is playering
+          in is made up of small square images in a gride layout.
+        </p>
+        <!--list of todo-->
+        <div class="col-6">
+          <ol>
+            <li>right click the Hierarchy -> 2D Object -> tile map</li>
+            <li>rename to TileMap</li>
+            <li>window -> 2D -> tile palette</li>
+            <li>
+              Tile Palette window
+              <ul>
+                <li>Create new tile palette -> name Palette_0</li>
+                <li>drag the Ground, Puddle, and Rock images into the Palette</li>
+              </ul>
+            </li>
+            <li>
+              Heirarchy -> TileMap -> tileMap
+              <ul>
+                <li>rename to Ground</li>
+                <li>set its sorting layer to Ground</li>
+                <li>Hierarchy -> TileMap right click -> 2D object TileMap</li>
+                <li>rename to Overlay</li>
+                <li>set its sorting layer to GroundOverLay</li>
+              </ul>
+            </li>
+            <li>
+              Tile Palette window
+              <ul>
+                <li>Actire Tilmap = Ground</li>
+                <li>Slect Brush too and all dreen tile in the window</li>
+                <li>Scene fill camera view space with that tile</li>
+                <li>Add some puddles to the Ground tile map</li>
+                <li>Add some Rocks to the Overlay tile map</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+        <!--example-->
+        <div class="col-6">
+          <!--images-->
+          <div class="col-6">
+            <img src="../Images/unityProjects/TopDown/ground_tile_map.jpg"
+                  alt="image of game scene without the overlay layer">
+            <img src="../Images/unityProjects/TopDown/overlay_tile_map.jpg"
+                  alt="image of game scene with overlay scene">
+          </div>
+          <!--desc-->
+          <div class="col-6">
+            <p>
+              notice the <b>rock</b> whick is on the overlay tile map. If you
+              toggle the active box in the inspector the rocks should switch
+              between being there and not being there. I would definitly recomend
+              you watch 
+              <a href="https://www.youtube.com/watch?v=ryISV_nH8qw">this</a> 
+              video on tile maps by Brackeys.
+            </p>
+          </div>
+        </div>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://www.youtube.com/watch?v=ryISV_nH8qw">
+            Brackeys - TILEMAPS in Unity
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/kelman7000/COMP266-GAME">
+            Project Download
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#top-down">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="interactables" class="row">
+      <h2>Interactables</h2>
+      <p>
+        For this section we are going to make some interactables objects like
+        an ammo box that will give the player more ammo, a coin that will add
+        one coin to the player and a heart that will heal the player. You will
+        see <a href="">inheritance </a> and <a href="">polymorphism </a> in 
+        action here.
+      </p>
+      <p>
+        First you will need to open the Interactable script and add the following
+      </p>
+      <ul>
+        <li>[serializeField] protected int amount</li>
+        <li>private AudioSource audioSource</li>
+        <li>public delegate void OnInteractDelegate()</li>
+        <li>public static event OnInteracteDelegate OnInteractEvent</li>
+        <li>OnTriggerEntre2D method</li>
+        <li>proctected virtual void Interact</li>
+      </ul>
+      <!--OnTriggerEnter2D-->
+      <div class="row">
+        <h3>OnTriggerEnter2D()</h3>
+        <p>
+          here all you will want to do is check if the collision parameter's tag
+          is equal to Player, if it does then call interact(). Do this using the 
+          <a href="">.Equals(string value) method.</a>
+        </p>
+        <img src="../Images/unityProjects/TopDown/interactables/OnTriggerEnter2D().jpg"
+            alt="OnTiggerEnter2D method">
+      </div>
+      <!--Interact-->
+      <div class="row">
+        <h3>Interact()</h3>
+        <p>
+          Click <a href="">here</a> if you are unsure what a virtual method is.
+          in this method we want to invoke the OnInteractEvent and call the Play 
+          method on the AudioSource.
+        </p>
+        <img src="../Images/unityProjects/TopDown/interactables/Interact().jpg"
+            alt="Interact method">
+      </div>
+      <p>
+        Secondly we want to open the AmmoPickup, CoinPickup, and HeartPickup 
+        scripts. After the colin where it says MonoBehaviour replace MonoBehaviour
+        with Interactable. This will allow this script to inherite from that script.
+        Do this in all three scripts. 
+      </p>
+      <!--ammo pick-->
+      <div class="row">
+        <h3>AmmoPickup</h3>
+        <p>
+          create an <a href="">override method</a> for the Interact method. In
+          it we want to make the amount of ammo that the Player has go up by
+          ammount, which if you recall is a field in the Interactable class. Then
+          call the base Interact() method, this calls Interact from the Interactable
+          class. Lastly we want to destroy the gameObject after 0.1 seconds.
+        </p>
+        <img src="../Images/unityProjects/TopDown/ammo_pickup/Interact().jpg"
+            alt="AmmoPickup Interact() method">
+      </div>
+      <!--challenge 1-->
+      <div class="row">
+        <h3>Section Challenge CoinPickUp</h3>
+        <p>
+          I am going to leave this one as a challenge. (Hint) You want to make the
+          number of <strong>coins</strong> the <strong>Player</strong> has go up
+          by ammount. After you have attempted this click on 'Solution' below to 
+          check if you are right.
+        </p>
+        <div>
+          <button class="solution-button">Solution</button>
+          <!--will be hidden until Solutions is click-->
+          <div class="challenge_answer row">
+            <!--img-->
+            <div class="col-4 col-m-12 col-s-12">
+              <img src="../Images/unityProjects/TopDown/coin_pickup/Interact().jpg"
+                  alt="CoinPickup Interact() method make hidden until challenge finished">
+            </div>
+            <!--desc-->
+            <div class="col-8 col-m-12 col-s-12">
+              <p>
+                This is the exact same as picking up ammo just with coins instead.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--heartPickup-->
+      <div class="row">
+        <h3>HeartPickup</h3>
+        <p>
+          This one is a little different that the other two. First you will need
+          to make a field variable health of type Health. Now in the Interact() 
+          method assign this variable to the Players Health component. Next you
+          can call health.Heal(ammount) but I am going to only heal by half the 
+          players max health. Then call the base Interact() method and destroy
+          after 0.1 seconds.
+        </p>
+        <img src="../Images/unityProjects/TopDown/health_pickup/Interact().jpg" 
+            alt="HealthPickup Interact() method">
+      </div>
+      <p>
+        Here we are going to fix the issuse that have arrived because our Player
+        class has nothing in it. Open the Player script and add the following.
+      </p>
+      <ul>
+        <li>public static int ammo = 31</li>
+        <li>public static int coins = 0</li>
+      </ul>
+      <p>
+        Now it is time to make the UI we setup earlier to work with the scripts.
+        We will do this with the UIController script so open that up. Add using
+        TMPro to the top of the script.
+      </p>
+      <h3>List of Fields</h3>
+      <ul>
+        <li>[SerializeField] TextMeshProUGUI ammoText</li>
+        <li>[SerializeField] TextMeshProUGUI coinText</li>
+      </ul>
+      <!--Start-->
+      <div class="row">
+        <h3>Start()</h3>
+        <p>
+          We want to set the ammo text to be Player.ammo and set the coin text to
+          be Player.coins. We also want to create two methods that do the same thing,
+          one from the ammo text and one for the coin text and subscribe them to some
+          events.
+        </p>
+        <img src="../Images/unityProjects/TopDown/ui_controller/Start().jpg"
+            alt="the Start() method">
+      </div>
+      <!--updateAmmoTxt-->
+      <div class="row">
+        <h3>UpdateAmmoTxt()</h3>
+        <p>
+          This is a vary simple methodthat does what we have already done in the start
+          method, update the ammo text. 
+        </p>
+        <img src="../Images/unityProjects/TopDown/ui_controller/UpdateAmmoTxt().jpg"
+            alt="UpdateAmmoTxt() method">
+      </div>
+      <!--updateCoinTxt-->
+      <div class="row">
+        <h3>UpdateCoinTxt()</h3>
+        <p>
+          This is a simple methdo that does what we have already done in the start 
+          method, update the coins text.
+        </p>
+        <img src="../Images/unityProjects/TopDown/ui_controller/UpdateCoinTxt().jpg"
+            alt="UpdateCoinTxt() method">
+      </div>
+      <!--challenge-->
+      <div class="row">
+        <h3>Section Challenge #2</h3>
+        <p>
+          Your challenge for this section is going to be to create the actual 
+          game objects, that being the Ammo box, Coin, and Heart.
+        </p>
+        <div>
+          <button class="solution-button">Solution</button>
+          <!--will be hidden until Solutions is click-->
+          <div class="challenge_answer">
+            <p>
+              Each object will need a Sprite Renderer, some 2D Collider, Animator
+              Audio Source and its respective pickup component.
+            </p>
+            <ul>
+              <li>
+                <div class="row">
+                  <p>
+                    You can set the ammount to whatever you want but I have set mine
+                    to 16.
+                  </p>
+                </div>
+                <img src="../Images/unityProjects/TopDown/ammo_pickup/ammo_object.jpg" 
+                alt="the Ammo box">
+              </li>
+              <li>
+                <div class="row">
+                  <p>
+                    You can set the ammount to whatever you want but I have set mine
+                    to 1.
+                  </p>
+                </div>
+                <img src="../Images/unityProjects/TopDown/coin_pickup/coin_object.jpg" 
+                    alt="the Coin">  
+              </li>
+              <li>
+                <div class="row">
+                  <p>
+                    If you set this one up the same way as I have don't worry about
+                    setting the ammount. Otherwise you will need to set it.
+                  </p>
+                </div>
+                <img src="../Images/unityProjects/TopDown/health_pickup/heart_object.jpg" 
+                    alt="the Heart">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://github.com/kelman7000/COMP266-GAME">
+            Project Download
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#top-down">Quiz</a></li>
+      </ul>  
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="obsticals" class="row">
+      <h2>Obsticals</h2>
+      <p>
+        For this section we are going to make a hay bale that can obscute the 
+        player, meaning that when a user shoots the gun at it the bullet is stoped
+        and cannot reach an enemy that is behind it but the player also can not
+        walk over it and must go around. Just as the Health and Damage scrips rely
+        on one another we will write a new script Break that will rely on the two.
+        Our goal here is to make it so the bale goes has multiple sprites that show
+        based on how much health it has left. So open up the Break script.
+      </p>
+      <h3>List of Fields</h3>
+      <ul>
+        <li>[SerializeField] Sprite[] damgedSprites</li>
+        <li>private SpriteRenderer sp</li>
+        <li>private Health health</li>
+      </ul>
+      <!--start-->
+     <div class="row">
+      <h3>Start()</h3>
+      <p>
+        In this method we want the get the Health component of the game object
+        with the Break script and get the Sprite renderer. We also want to 
+        create a new method UpdateSprite() and subscribe it to the OnTakeDamageEvent.
+      </p>
+      <img src="../Images/unityProjects/TopDown/break/Start().jpg"
+           alt="Start() method">
+     </div>
+     <!--updateSprite-->
+      <div class="row">
+        <h3>UpdateSprite()</h3>
+        <p>
+          We want to set the Sprite Renderer sprite to the one at index
+          currHealth % damagedSprites.lenght. This will set the correct sprite
+          for the sprite render.
+        </p>
+        <img src="../Images/unityProjects/TopDown/break/UpdateSprite().jpg"
+            alt="UpdateSprite() method">
+      </div>
+      <!--in the editor-->
+      <div class="row">
+        <h3>In the Unity Editor</h3>
+        <p>
+          First you will need to make a new gameObject called Hay Bale. Then add
+          a SpriteRenderer, BoxCollider2D, Health, and AudioSource components.
+          Set the sprite to Hay_0, resize the box collider if needed, add a
+          Health Canvas child and set the Health Bar, set Max Health to 15 and 
+          check destroy on death and destroy death effect time to destroy death
+          effect to 1. In the Break component set size to 3 and use Hay_0, Hay_2,
+          and Hey_3.
+        </p>
+      </div>
+      <!--challenge-->
+      <div class="row">
+        <h3>Section Challenge #1</h3>
+        <p>
+          Here your challenge is to make the Hay bale which will go through
+          three different stages, use Hay_0, Hay_2, and Hay_3 for the damage 
+          sprites make sure to add a Rigidbody2D and set that up too.
+        </p>
+        <div>
+          <button class="solution-button">Solution</button>
+          <!--will be hidden until Solutions is click-->
+          <div class="challenge_answer row">
+            <!--img-->
+            <div class="col-4 col-s-12">
+              <img src="../Images/unityProjects/TopDown/break/hay_bale_object_and_inspector.png" 
+                  alt="hay bale obstical">
+            </div>
+            <!--desc-->
+            <div class="col-8 col-s-12">
+              <p>
+                it will need a Sprite Renderer, Box Collider 2D, Health, Break, Drop
+                and Audio Source components. The health will be 15 because the bullet 
+                does 5 damage, this means that the bale will be destroyed in 3 shots.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://github.com/kelman7000/COMP266-GAME">
+            Project Download
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#top-down">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="animations" class="row">
+      <h2>Animations</h2>
+      <p>
+        It is time that we make the game feel more alive. We are going to are
+        accomplish this through the use of aminations, The items that we will
+        animate are the Ammo box, Coin and Heart. 
+      </p>
+      <p>
+        First you will need to open the <a href="">Animator Window</a> and
+        the <a href="">Animatoion window</a>. Next create a new folder called 
+        Animations and inside that filder create three more folders. One for
+        the Ammo box, Coin and Heart.
+      </p>
+      <p>Now add an Animator component to all three of the objects.</p>
+      <h3>Challenge</h3>
+      <p>
+        I am going to be leaving this entire setion as a challenge with 
+        some hints. With the eception of the Player death animation. There
+        will also not be any solution for this challenge.
+      </p>
+      <h4>Hints</h4>
+      <ol>
+        <li>make the animation simple just simply scale it up and back down</li>
+        <li>three keyFrames, start (scaling up), middle (scale back down), end</li>
+        <li><a href="">how to make animations</a></li>
+      </ol>
+      <div class="row">
+        <div class="col-6 col-s-12">
+          <div class="gif">
+            <iframe src="https://giphy.com/embed/f5vVjzbci8elbT3iP1" 
+              class="giphy-embed" allowFullScreen></iframe>
+            <p><a href="https://giphy.com/gifs/f5vVjzbci8elbT3iP1">via GIPHY</a></p>
+          </div>
+        </div>
+      </div>
+      <!--player death anim-->
+      <div class="row">
+        <h3>Player Death animation</h3>
+        <!--list-->
+        <div class="col-6 col-s-12">
+          <ul>
+            <li>add the grave stone sprite to the hierarchy</li>
+            <li>set all its layers</li>
+            <li>create a folder in animations for it</li>
+            <li>create new clip called death</li>
+            <li>
+              Transform at frame 0
+              <ul>
+                <li>Rotation all 0</li>
+                <li>Scale 1.5 on x & y</li>
+              </ul>
+            </li>
+            <li>
+              Transform at frame 18
+              <ul>
+                <li>rotation -180 at z</li>
+                <li>Scale 2 on x & y</li>
+              </ul>
+            </li>
+            <li>
+              Transform at frame 36
+              <ul>
+                <li>Roatation -369 at z</li>
+                <li>Scale 1.5 on x & y</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!--gif-->
+        <div class="col-6 col-s-12">
+          <div class="gif">
+            <iframe src="https://giphy.com/embed/KFnsUaZ0bCfLKMs5La" 
+              class="giphy-embed" allowFullScreen></iframe>
+              <p><a href="https://giphy.com/gifs/KFnsUaZ0bCfLKMs5La">via GIPHY</a></p>
+          </div>
+        </div>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://github.com/kelman7000/COMP266-GAME">
+            Project Download
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#top-down">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="drops" class="row">
+      <h2>Drops</h2>
+      <p>
+        In this section we will write a script that will make objects drop 
+        something when their health fall below zero. Here the drops will consist
+        of the Ammo Box, Coin and Heart. The enemy and hay bale will be the
+        objects that drop somthing. Now its time to open the Dop script.
+      </p>
+      <h3>List of Fields</h3>
+      <ul>
+        <li>[SerializeField] GameObject[] drops</li>
+        <li>private Health health</li>
+      </ul>
+      <!--start-->
+      <div class="row">
+        <h3>Start()</h3>
+        <p>
+          Here we want to get the Health Component of the object and subscripe 
+          a new private method SpawnDrop() to the health.OnDeathEvent. I don't
+          want mine to spawn some drop every time, I only want it to happen some 
+          times.
+        </p>
+        <img src="../Images/unityProjects/TopDown/drop/Start().jpg"
+            alt="Start() method">
+      </div>
+      <!--spawnDrop-->
+      <div class="row">
+        <h3>SpawnDrop()</h3>
+        <p>
+          This method will get some random index form the drops array and 
+          instantiate it into the game world. If you don't know why we add
+          five to the drops arrays lenght it is because we want there to be
+          a chance that nothing will be droped.
+        </p>
+        <img src="../Images/unityProjects/TopDown/drop/SpawnDrop().jpg" 
+            alt="SpawnDrop() method">
+      </div>
+      <p>
+        After you add the <i>Drop</i> component to the Enemy and Hay Bale set
+        the drops array size to 3 and drag the Ammo, Coin and Heart into the
+        slots.
+      </p>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://github.com/kelman7000/COMP266-GAME">
+            Project Download
+          </a>
+        </li>
+        <li><a href="">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="spawning" class="row">
+      <h2>Spawning</h2>
+      <p>
+        For this section we are going to make an object that will spawn enemies 
+        every x seconds. This will be done with the use of a 
+        <a href="">Coroutine()</a> called Spawn but we will also make a method
+        SpawnRandomEnemy() that will choose some random enemy. This is just
+        helpful if you want to make more types of enemies.
+      </p>
+      <h3>List of Fields</h3>
+      <ul>
+        <li>[SerializeField] int numOfEnemies</li>
+        <li>[SerializeField] float timeBetweenSpawns</li>
+        <li>[SerializeField] GameObject[] enemyTypes</li>
+      </ul>
+      <!--start-->
+      <div class="row">
+        <h3>Start()</h3>
+        <p>Here we just need to <a href="">start the coroutine</a></p>
+        <img src="../Images/unityProjects/TopDown/spawn_enemies/Start().jpg"
+            alt="Start() method">
+      </div>
+      <!--spawn-->
+      <div class="row">
+        <h3>IEnumerator Spawn()</h3>
+        <p>
+          Here we want to use a loop that will only spawn some random enemy
+          numOfEnemies times every timeBetweenSpawns
+        </p>
+        <img src="../Images/unityProjects/TopDown/spawn_enemies/Spawn().jpg"
+             alt="Spawn() method">
+      </div>
+      <!--spawnRandomEnemy-->
+      <div class="row">
+        <h3>SpawnRandomEnemy()</h3>
+        <p>
+          This method is going to work the same way the the SpawnDrop() method worked
+          by getting a random index and returning the object at that index in the 
+          enemyTypes array.
+        </p>
+        <img src="../Images/unityProjects/TopDown/spawn_enemies/SpawnRandomEnemy().jpg"
+            alt="SpawnRandomEnemy() method">
+      </div>
+      <!--challenge-->
+      <div class="row">
+        <h3>Section Challenge #1</h3>
+        <p>
+          The challenge here is to make a spawner object that spawns ten enemies
+          over intervales of 3 seconds.
+        </p>
+        <div>
+          <button class="solution-button">Solution</button>
+          <!--will be hidden until Solutions is click-->
+          <div class="challenge_answer row">
+            <!--img-->
+            <div class="col-4 col-s-12">
+              <img src="../Images/unityProjects/TopDown/spawn_enemies/spawner_object.jpg"
+                alt="Start() method">
+            </div>
+            <!--desc-->
+            <div class="col-8 col-s-12">
+              <p>
+                Create a new empty and rename it to spawner then add the Spawn Enemies
+                component to it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4>Helpful links</h4>
+      <ul>
+        <li>
+          <a href="https://github.com/kelman7000/COMP266-GAME">
+            Project Download
+          </a>
+        </li>
+        <li><a href="QuizSelection.html#top-down">Quiz</a></li>
+      </ul>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="sounds" class="row">
+      <h2>Sounds</h2>
+      <p>
+        For this section we are going to be adding sounds to the game, there
+        will be one for the Player Death, Enemy Death, getting hit, shooting
+        and maybe more. Now the good news is that all the scripts that will 
+        be playing sounds have already been setup and we only need to add  
+        the appropriate audio clips. The scripts that have an Audio Source are
+        Gun, Health and Interactable.
+      </p>
+      <h3>Section Challenge #1</h3>
+      <p>
+        This challenge is to download and import the <a href="">Sounds</a>
+        and then set then up for all the game objects that have one or more
+        or the scripts listed above as an attatched component.
+      </p>
+      <div>
+        <button class="solution-button">Solution</button>
+        <!--will be hidden until Solutions is click-->
+        <div class="challenge_answer row">
+          <p>
+            There is no solution because this part is all up to you. However
+            if you are having trouble getting everything to work properly I
+            suggest you click <a href="">here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="divider div-transparent"></div>
+    <div id="menus" class="row">
+      <h2>Menus</h2>
+      <p>
+        Here we're going to make a new scnene that will be the main menu which
+        will have a title, subtitle and play button that brings you to the game
+        scene. Preform the following steps.
+      </p>
+      <ol>
+        <li>CTRL+N to make a new scene or File->new scene</li>
+        <li>name it Main Menu</li>
+        <li>
+          add
+          <ul>
+            <li>canvas</li>
+            <li>two text (to the canvas)</li>
+            <li>button (to the canvas)</li>
+          </ul>
+        </li>
+        <li>create new empty and call it LevelManager</li>
+        <li>add LevelManager script to LevelManager object</li>
+        <li>name one text Title and the other SubTitle</li>
+        <li>name the button way play</li>
+        <li>open the LevelManager script</li>
+      </ol>
+      <p>
+        in the LevelManager script remove both the Start() and Update() methods
+        and create the public void method Play(). At the top with the other using
+        tags add <i>using UnityEngine.SceneManagement</i> then load scene with 
+        index 1 in the Play() method.
+      </p>
+      <!--play-->
+      <div class="row">
+        <h3>Play()</h3>
+        <p>This method just loads the game scene</p>
+        <img src="../Images/unityProjects/TopDown/level_manager/Play().jpg"
+            alt="Play() Method">
+      </div>
+      <p>
+        You're not done just yet though, we still need to add this new scene to
+        the build settings. File->Build Settings then click Add Open Scenes and
+        re-arrange  the scenes so that the Game Scene has a 1 to the far right.
+        Now go to the Play button find its Button component add an on click then
+        drag the LevelManager object into it and find the LevelManager.Play. thats
+        all you are now finished with this project.
+      </p>
+      <!--main scene-->
+     <div class="col-8 col-s-6">
+      <img src="../Images/unityProjects/TopDown/level_manager/main_menu.jpg"
+        alt="what the main menu should look like">
+     </div>
+     <!--play button on click-->
+      <div class="col-4 col-s-6">
+        <img src="../Images/unityProjects/TopDown/level_manager/on_click.jpg" 
+           alt="Play button on click">
+      </div>
+    </div>
+  </div>
+   <!--footer-->
+   <footer class="row" id="footer">
+    <div class="row footer-top">
+      <div class="col-4 col-m-8 col-s-12">
+        <div class="row">
+          <p>
+            Using this site you gain the knowledge you need to make 2D games in
+            Unity. We provide you with tutorials that were made by us but also
+            provide links to other sources that you will find extremly helpful.
+            In the <a href="VideoTutorials.html">video turotials</a> is where
+            you can find the links to various playlist that will help you on
+            your journy.
+          </p>
+        </div>
+        <div class="row">
+          <ul class="inline">
+            <li><a href=""><i class="fa fa-twitter-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-facebook-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-google-plus-square fa-2x"></i></a></li>
+            <li><a href=""><i class="fa fa-instagram fa-2x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-4 col-m-12 col-s-12">
+        <p>
+          After getting introduced to everything we are going to combine all the 
+          new skill you've accquired into makeing two project games. One will be 
+          a 2D side scroller, and the other will the a top-down shooter. I if you
+          are completly new to everything about this I suggest you start with C# 
+          here and move on accordingly. 
+        </p>
+      </div>
+      <div class="col-4 col-m-12 col-s-12">
+        <h2>Navigation</h2>
+        <div class="col-6">
+          <ul>
+            <li><a href="CSharp.html">C#</a></li>
+            <li><a href="UnityEngine.html">Unity Engine</a></li>
+            <li><a href="Animating.html">Animating</a></li>
+            <li><a href="TopDown.html">Top-Down shooter</a></li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <ul>
+            <li><a href="VideoTutorials.html">Video Tutorials</a></li>
+            <li><a href="https://docs.unity3d.com/Manual/index.html">Unity manual</a></li>
+            <li><a href="QuizSelection.html">Quizs</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p>This is the address</p>
+      </div>
+    </div>
+    <div class="row footer-bottom col-12 col-s-12">
+      <p><i class="fa fa-copyright"></i><span id="date"></span> Kelsey</p>
+    </div>
+  </footer>
+  <script src="../Scripts/script.js"></script>
+</body>
+</html>
